@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomy Syria Project — SRP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+        }
+        .header {
+            background: #00B6F0;
+            color: white;
+            padding: 24px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: #e0f7ff; font-weight: 400; }
+        .header-meta {
+            font-size: 13px;
+            opacity: 0.9;
+            text-align: right;
+            line-height: 1.5;
+        }
+        .hero {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 24px;
+        }
+        .hero-box {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .formula {
+            background: linear-gradient(135deg, #00B6F0 0%, #0090c0 100%);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 12px;
+            flex: 1;
+        }
+        .formula h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.85; }
+        .formula p { font-size: 15px; line-height: 1.6; }
+        .formula code { background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+        .stats {
+            display: flex;
+            gap: 24px;
+            flex: 1;
+            justify-content: center;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value { font-size: 28px; font-weight: 700; color: #00B6F0; }
+        .stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+        .section-title {
+            max-width: 1200px;
+            margin: 40px auto 16px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .section-title .badge {
+            background: #00B6F0;
+            color: white;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .grid {
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .card-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            background: #fafbfc;
+            padding: 20px;
+        }
+        .card-body {
+            padding: 16px 20px 20px;
+        }
+        .card-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .card-sub {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        .card-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00B6F0;
+        }
+        .card-price .currency {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .qty-badge {
+            display: inline-block;
+            background: #f0f4f8;
+            color: #666;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+        .footer a { color: #00B6F0; text-decoration: none; }
+        .summary-bar {
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+        }
+        .summary-inner {
+            background: white;
+            border-radius: 16px;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .summary-item { text-align: center; }
+        .summary-item .val { font-size: 24px; font-weight: 700; color: #333; }
+        .summary-item .val.blue { color: #00B6F0; }
+        .summary-item .lbl { font-size: 12px; color: #999; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        @media (max-width: 600px) {
+            .hero-box { flex-direction: column; gap: 16px; }
+            .stats { gap: 16px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+            .summary-inner { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-inner">
+        <div class="logo">ATOMY <span>Syria Project</span></div>
+        <div class="header-meta">
+            Syria Retail Price List<br>
+            <strong id="date">March 23, 2026</strong>
+        </div>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="hero-box">
+        <div class="formula">
+            <h3>Pricing Formula</h3>
+            <p>Turkey Retail + <code>12%</code> Shipping + <code>20%</code> Commission + <code>30%</code> Profit = <strong>SRP</strong></p>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Products</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="totalUnits">0</div>
+                <div class="stat-label">Total Units</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="totalUSD">$0</div>
+                <div class="stat-label">Total Value</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SKINCARE SETS -->
+<div class="section-title"><h2>Skincare Sets</h2><span class="badge">Premium</span></div>
+<div class="grid" id="skincare"></div>
+
+<!-- SUNCARE -->
+<div class="section-title"><h2>Suncare</h2></div>
+<div class="grid" id="suncare"></div>
+
+<!-- MASKS -->
+<div class="section-title"><h2>Masks</h2></div>
+<div class="grid" id="masks"></div>
+
+<!-- HAIRCARE -->
+<div class="section-title"><h2>Haircare</h2></div>
+<div class="grid" id="haircare"></div>
+
+<!-- BODYCARE -->
+<div class="section-title"><h2>Bodycare</h2></div>
+<div class="grid" id="bodycare"></div>
+
+<!-- ORAL CARE -->
+<div class="section-title"><h2>Oral Care</h2></div>
+<div class="grid" id="oralcare"></div>
+
+<!-- HOUSEHOLD -->
+<div class="section-title"><h2>Household</h2></div>
+<div class="grid" id="household"></div>
+
+<!-- SUMMARY -->
+<div class="summary-bar">
+    <div class="summary-inner">
+        <div class="summary-item">
+            <div class="val blue" id="sumProducts">0</div>
+            <div class="lbl">Products</div>
+        </div>
+        <div class="summary-item">
+            <div class="val" id="sumUnits">0</div>
+            <div class="lbl">Total Units</div>
+        </div>
+        <div class="summary-item">
+            <div class="val" id="sumTurkey">₺0</div>
+            <div class="lbl">Turkey Cost</div>
+        </div>
+        <div class="summary-item">
+            <div class="val blue" id="sumSRP">$0</div>
+            <div class="lbl">Total SRP (USD)</div>
+        </div>
+        <div class="summary-item">
+            <div class="val" id="sumProfit">$0</div>
+            <div class="lbl">Net Profit (USD)</div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    Atomy Syria Project &middot; SRP valid as of March 23, 2026 &middot; Exchange rate: 1 USD = 44.32 TL<br>
+    Prices sourced live from <a href="https://tr.atomy.com" target="_blank">tr.atomy.com</a>
+</div>
+
+<script>
+const RATE = 44.32;
+
+// SRP = Turkey Retail * (1 + 0.12 + 0.20 + 0.30) = Turkey Retail * 1.62
+const MULTIPLIER = 1.62;
+
+const products = [
+    // SKINCARE SETS
+    {
+        category: "skincare",
+        name: "Evening Care 4 Set",
+        sub: "Evening Care Set",
+        priceTL: 1873.27,
+        qty: 4,
+        img: "https://image.atomy.com/ID/goods/I00355/org/583/240930000025583.jpg?w=400&h=400"
+    },
+    {
+        category: "skincare",
+        name: "THE FAME Cilt Bakım Seti",
+        sub: "THE FAME Skincare Set",
+        priceTL: 5234.28,
+        qty: 10,
+        img: "https://image.atomy.com/ID/goods/I00003/org/319/240926000025319.jpg?w=400&h=400"
+    },
+    {
+        category: "skincare",
+        name: "Absolute CellActive Cilt Bakım Seti",
+        sub: "Absolute CellActive Skincare Set",
+        priceTL: 11019.60,
+        qty: 4,
+        img: "https://image.atomy.com/ID/goods/I00207/org/207/240930000025207.jpg?w=400&h=400"
+    },
+    {
+        category: "skincare",
+        name: "Derma Real Cica Set",
+        sub: "Derma Real Cica Set",
+        priceTL: 3103.08,
+        qty: 4,
+        img: "https://image.atomy.com/EU/goods/700759/org/759/thumb_700759_0001.jpg?w=400&h=400"
+    },
+    // SUNCARE
+    {
+        category: "suncare",
+        name: "Absolute Essence UV Güneş Koruyucu",
+        sub: "Absolute Essence Sunscreen",
+        priceTL: 713.69,
+        qty: 6,
+        img: "https://image.atomy.com/TR/goods/E00276/org/374/250610000042374.jpg?w=400&h=400"
+    },
+    // MASKS
+    {
+        category: "masks",
+        name: "Evening Care Soyulabilir Maske",
+        sub: "Evening Care Peel-Off Mask",
+        priceTL: 493.15,
+        qty: 2,
+        img: "https://image.atomy.com/ID/goods/I00335/org/962/241031000028962.jpg?w=400&h=400"
+    },
+    {
+        category: "masks",
+        name: "Marine Göz Bandı",
+        sub: "Marine Gel Mask (Eye Band)",
+        priceTL: 787.69,
+        qty: 4,
+        img: "https://image.atomy.com/ID/goods/I00464/org/661/240930000025661.jpg?w=400&h=400"
+    },
+    {
+        category: "masks",
+        name: "Daily Expert Maske (Aydınlatıcı)",
+        sub: "Daily Expert Mask — Illuminating *10",
+        priceTL: 554.11,
+        qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00466/org/687/240930000025687.jpg?w=400&h=400"
+    },
+    // HAIRCARE
+    {
+        category: "haircare",
+        name: "Scalpcare Şampuan + Saç Kremi",
+        sub: "Scalpcare Shampoo + Conditioner Set",
+        priceTL: 1216.51,
+        qty: 2,
+        img: "https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0001.jpg?w=400&h=400"
+    },
+    {
+        category: "haircare",
+        name: "Atomy Saengmodan Saç Toniği",
+        sub: "Sengmo Dansu Hair Tonic",
+        priceTL: 538.19,
+        qty: 5,
+        img: "https://image.atomy.com/CA/goods/C00620/org/976/241216000032976.jpg?w=400&h=400"
+    },
+    {
+        category: "haircare",
+        name: "Hair Oil Complex",
+        sub: "Hair Oil Complex",
+        priceTL: 602.64,
+        qty: 3,
+        img: "https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0001.png?w=400&h=400"
+    },
+    // BODYCARE
+    {
+        category: "bodycare",
+        name: "Atomy Bitkisel Vücut Temizleyici",
+        sub: "Herbal Body Wash",
+        priceTL: 505.02,
+        qty: 1,
+        img: "https://image.atomy.com/SG/goods/S00635/org/080/241022000028080.jpg?w=400&h=400"
+    },
+    {
+        category: "bodycare",
+        name: "Atomy El Kremi",
+        sub: "Hand Cream",
+        priceTL: 596.75,
+        qty: 5,
+        img: "https://image.atomy.com/CA/goods/C00542/org/542/thumb_a6f6baa7-d835-468a-a67c-63bc31572f5d.jpg?w=400&h=400"
+    },
+    {
+        category: "bodycare",
+        name: "Atomy Vücut Losyonu",
+        sub: "Body Lotion",
+        priceTL: 318.76,
+        qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00645/org/816/240930000025816.jpg?w=400&h=400"
+    },
+    {
+        category: "bodycare",
+        name: "Rich Body Vücut Kremi",
+        sub: "Rich Body Cream",
+        priceTL: 532.25,
+        qty: 5,
+        img: "https://image.atomy.com/EU/goods/700647/org/647/thumb_700647_0001.jpg?w=400&h=400"
+    },
+    // ORAL CARE
+    {
+        category: "oralcare",
+        name: "Diş Fırçası * 8 Adet",
+        sub: "Toothbrush * 8",
+        priceTL: 464.36,
+        qty: 12,
+        img: "https://image.atomy.com/SG/goods/S00510/org/043/241118000030043.jpg?w=400&h=400"
+    },
+    {
+        category: "oralcare",
+        name: "Diş Macunu 200g * 5 Adet",
+        sub: "Toothpaste 200g * 5",
+        priceTL: 720.82,
+        qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00505/org/425/241015000027425.jpg?w=400&h=400"
+    },
+    {
+        category: "oralcare",
+        name: "Ağız Bakım Seti *4 Set",
+        sub: "Oral Care Set *4",
+        priceTL: 606.01,
+        qty: 6,
+        img: "https://image.atomy.com/ID/goods/I00520/org/520/240930000025520.jpg?w=400&h=400"
+    },
+    // HOUSEHOLD
+    {
+        category: "household",
+        name: "Atomy Lateks Bulaşık Eldiveni (L) *2",
+        sub: "Natural Latex Gloves *2 Pairs",
+        priceTL: 209.95,
+        qty: 8,
+        img: "https://image.atomy.com/US/goods/A00834/org/856/241203000031856.jpg?w=400&h=400"
+    },
+];
+
+function createCard(p) {
+    const srpUSD = (p.priceTL * MULTIPLIER / RATE).toFixed(2);
+    return `
+        <div class="card">
+            <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#eef3f7';this.alt='Image unavailable'">
+            <div class="card-body">
+                <div class="qty-badge">Qty: ${p.qty}</div>
+                <div class="card-name">${p.name}</div>
+                <div class="card-sub">${p.sub} &middot; ₺${p.priceTL.toLocaleString('tr-TR')}</div>
+                <div class="card-price">$${parseFloat(srpUSD).toLocaleString('en-US', {minimumFractionDigits:2})} <span class="currency">SRP</span></div>
+            </div>
+        </div>
+    `;
+}
+
+// Render
+const categories = ['skincare', 'suncare', 'masks', 'haircare', 'bodycare', 'oralcare', 'household'];
+let totalProducts = products.length;
+let totalUnits = 0;
+let totalSRP = 0;
+let totalTurkey = 0;
+let totalProfit = 0;
+
+categories.forEach(cat => {
+    const container = document.getElementById(cat);
+    if (!container) return;
+    const catProducts = products.filter(p => p.category === cat);
+    container.innerHTML = catProducts.map(createCard).join('');
+    catProducts.forEach(p => {
+        totalUnits += p.qty;
+        const unitSRP = p.priceTL * MULTIPLIER / RATE;
+        totalSRP += unitSRP * p.qty;
+        totalTurkey += p.priceTL * p.qty;
+        totalProfit += (p.priceTL * MULTIPLIER - p.priceTL) * p.qty / RATE;
+    });
+});
+
+// Update stats
+document.getElementById('totalItems').textContent = totalProducts;
+document.getElementById('totalUnits').textContent = totalUnits;
+document.getElementById('totalUSD').textContent = '$' + Math.round(totalSRP).toLocaleString();
+
+document.getElementById('sumProducts').textContent = totalProducts;
+document.getElementById('sumUnits').textContent = totalUnits;
+document.getElementById('sumTurkey').textContent = '₺' + Math.round(totalTurkey).toLocaleString('tr-TR');
+document.getElementById('sumSRP').textContent = '$' + Math.round(totalSRP).toLocaleString();
+document.getElementById('sumProfit').textContent = '$' + Math.round(totalProfit).toLocaleString();
+</script>
+
+</body>
+</html>
