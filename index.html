@@ -14,10 +14,10 @@
             min-height: 100vh;
         }
         .header {
-            background: #00B6F0;
-            color: white;
-            padding: 24px 0;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            background: #ffffff;
+            color: #333;
+            padding: 16px 0;
+            border-bottom: 1px solid #e8ecf0;
         }
         .header-inner {
             max-width: 1200px;
@@ -25,55 +25,9 @@
             padding: 0 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        .logo span { color: #e0f7ff; font-weight: 400; }
-        .header-meta {
-            font-size: 13px;
-            opacity: 0.9;
-            text-align: right;
-            line-height: 1.5;
-        }
-        .hero {
-            max-width: 1200px;
-            margin: 32px auto;
-            padding: 0 24px;
-        }
-        .hero-box {
-            background: white;
-            border-radius: 16px;
-            padding: 28px 32px;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .formula {
-            background: linear-gradient(135deg, #00B6F0 0%, #0090c0 100%);
-            color: white;
-            padding: 20px 28px;
-            border-radius: 12px;
-            flex: 1;
-        }
-        .formula h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.85; }
-        .formula p { font-size: 15px; line-height: 1.6; }
-        .formula code { background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
-        .stats {
-            display: flex;
-            gap: 24px;
-            flex: 1;
             justify-content: center;
         }
-        .stat {
-            text-align: center;
-        }
-        .stat-value { font-size: 28px; font-weight: 700; color: #00B6F0; }
-        .stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+        .logo-img { height: 50px; }
         .section-title {
             max-width: 1200px;
             margin: 40px auto 16px;
@@ -82,11 +36,7 @@
             align-items: center;
             gap: 12px;
         }
-        .section-title h2 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
+        .section-title h2 { font-size: 18px; font-weight: 600; color: #333; }
         .section-title .badge {
             background: #00B6F0;
             color: white;
@@ -121,17 +71,23 @@
             background: #fafbfc;
             padding: 20px;
         }
-        .card-body {
-            padding: 16px 20px 20px;
-        }
+        .card-body { padding: 16px 20px 20px; }
         .card-name {
             font-size: 14px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             line-height: 1.3;
         }
-        .card-sub {
+        .card-ar {
+            font-size: 13px;
+            font-weight: 500;
+            color: #555;
+            direction: rtl;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+        .card-kr {
             font-size: 12px;
             color: #999;
             margin-bottom: 12px;
@@ -140,10 +96,7 @@
             font-size: 22px;
             font-weight: 700;
             color: #00B6F0;
-        }
-        .card-price .currency {
-            font-size: 14px;
-            font-weight: 500;
+            margin-bottom: 8px;
         }
         .qty-badge {
             display: inline-block;
@@ -155,37 +108,67 @@
             font-weight: 500;
             margin-bottom: 8px;
         }
-        .footer {
-            background: #1a1a2e;
-            color: rgba(255,255,255,0.5);
-            text-align: center;
-            padding: 24px;
-            font-size: 12px;
-            margin-top: 40px;
-        }
-        .footer a { color: #00B6F0; text-decoration: none; }
-        .summary-bar {
-            max-width: 1200px;
-            margin: 0 auto 32px;
-            padding: 0 24px;
-        }
-        .summary-inner {
-            background: white;
-            border-radius: 16px;
-            padding: 24px 32px;
+        /* Collapsible description */
+        .desc-toggle {
             display: flex;
-            justify-content: space-around;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 8px 0 0;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 4px;
+            user-select: none;
         }
-        .summary-item { text-align: center; }
-        .summary-item .val { font-size: 24px; font-weight: 700; color: #333; }
-        .summary-item .val.blue { color: #00B6F0; }
-        .summary-item .lbl { font-size: 12px; color: #999; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .desc-toggle-label {
+            font-size: 12px;
+            color: #00B6F0;
+            font-weight: 600;
+        }
+        .desc-arrow {
+            font-size: 10px;
+            color: #00B6F0;
+            transition: transform 0.2s;
+        }
+        .desc-arrow.open { transform: rotate(180deg); }
+        .desc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .desc-content.open { max-height: 600px; }
+        .desc-inner {
+            padding: 10px 0 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.7;
+            direction: rtl;
+            text-align: right;
+        }
+        .desc-inner h4 {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 6px;
+            direction: rtl;
+            text-align: right;
+        }
+        .desc-inner strong { color: #444; }
+        .desc-inner ol, .desc-inner ul {
+            padding-right: 16px;
+            margin: 6px 0;
+        }
+        .desc-inner li { margin-bottom: 3px; }
+        .desc-inner .tip {
+            margin-top: 8px;
+            padding: 6px 10px;
+            background: #f0f8ff;
+            border-radius: 6px;
+            color: #0080a0;
+            font-size: 11px;
+            direction: rtl;
+            text-align: right;
+        }
         @media (max-width: 600px) {
-            .hero-box { flex-direction: column; gap: 16px; }
-            .stats { gap: 16px; }
             .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-            .summary-inner { flex-direction: column; gap: 16px; }
         }
     </style>
 </head>
@@ -193,311 +176,526 @@
 
 <div class="header">
     <div class="header-inner">
-        <div class="logo">ATOMY <span>Syria Project</span></div>
-        <div class="header-meta">
-            Syria Retail Price List<br>
-            <strong id="date">March 23, 2026</strong>
-        </div>
+        <img class="logo-img" src="atomy-logo.png" alt="ATOMY">
     </div>
 </div>
 
-<div class="hero">
-    <div class="hero-box">
-        <div class="formula">
-            <h3>Pricing Formula</h3>
-            <p>Turkey Retail + <code>12%</code> Shipping + <code>20%</code> Commission + <code>30%</code> Profit = <strong>SRP</strong></p>
-        </div>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value" id="totalItems">0</div>
-                <div class="stat-label">Products</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="totalUnits">0</div>
-                <div class="stat-label">Total Units</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="totalUSD">$0</div>
-                <div class="stat-label">Total Value</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SKINCARE SETS -->
 <div class="section-title"><h2>Skincare Sets</h2><span class="badge">Premium</span></div>
 <div class="grid" id="skincare"></div>
 
-<!-- SUNCARE -->
 <div class="section-title"><h2>Suncare</h2></div>
 <div class="grid" id="suncare"></div>
 
-<!-- MASKS -->
 <div class="section-title"><h2>Masks</h2></div>
 <div class="grid" id="masks"></div>
 
-<!-- HAIRCARE -->
 <div class="section-title"><h2>Haircare</h2></div>
 <div class="grid" id="haircare"></div>
 
-<!-- BODYCARE -->
 <div class="section-title"><h2>Bodycare</h2></div>
 <div class="grid" id="bodycare"></div>
 
-<!-- ORAL CARE -->
 <div class="section-title"><h2>Oral Care</h2></div>
 <div class="grid" id="oralcare"></div>
 
-<!-- HOUSEHOLD -->
 <div class="section-title"><h2>Household</h2></div>
 <div class="grid" id="household"></div>
 
-<!-- SUMMARY -->
-<div class="summary-bar">
-    <div class="summary-inner">
-        <div class="summary-item">
-            <div class="val blue" id="sumProducts">0</div>
-            <div class="lbl">Products</div>
-        </div>
-        <div class="summary-item">
-            <div class="val" id="sumUnits">0</div>
-            <div class="lbl">Total Units</div>
-        </div>
-        <div class="summary-item">
-            <div class="val" id="sumTurkey">₺0</div>
-            <div class="lbl">Turkey Cost</div>
-        </div>
-        <div class="summary-item">
-            <div class="val blue" id="sumSRP">$0</div>
-            <div class="lbl">Total SRP (USD)</div>
-        </div>
-        <div class="summary-item">
-            <div class="val" id="sumProfit">$0</div>
-            <div class="lbl">Net Profit (USD)</div>
-        </div>
-    </div>
-</div>
-
-<div class="footer">
-    Atomy Syria Project &middot; SRP valid as of March 23, 2026 &middot; Exchange rate: 1 USD = 44.32 TL<br>
-    Prices sourced live from <a href="https://tr.atomy.com" target="_blank">tr.atomy.com</a>
-</div>
-
 <script>
 const RATE = 44.32;
-
-// SRP = Turkey Retail * (1 + 0.12 + 0.20 + 0.30) = Turkey Retail * 1.62
-const MULTIPLIER = 1.62;
+// Retail price + 12% shipping + 20% commission + 30% profit
+const MULTIPLIER = 1.12 * 1.20 * 1.30;
 
 const products = [
-    // SKINCARE SETS
     {
         category: "skincare",
         name: "Evening Care 4 Set",
-        sub: "Evening Care Set",
-        priceTL: 1873.27,
-        qty: 4,
-        img: "https://image.atomy.com/ID/goods/I00355/org/583/240930000025583.jpg?w=400&h=400"
+        arabic: "مجموعة العناية المسائية 4 قطع",
+        korean: "애터미 이브닝케어 (4종)",
+        priceTL: 1873.27, qty: 4,
+        img: "https://image.atomy.com/ID/goods/I00355/org/583/240930000025583.jpg?w=400&h=400",
+        desc: `<h4>مجموعة العناية المسائية (4 قطع)</h4>
+مجموعة العناية بالبشرة المسائية تحتوي على 4 منتجات تعمل معاً لتنظيف البشرة وترطيبها قبل النوم. تشمل المنظف الرغوي، المنظف العميق، قناع التقشير، والكريم المغذي.
+<strong>النتائج:</strong> بشرة نظيفة ونضرة، ترطيب عميق، إزالة الخلايا الميتة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>المنظف الرغوي → اغسلي الوجه بالرغوة ودلّكي بلطف</li>
+<li>المنظف العميق → نظّفي المسام بعمق مع التقشير اللطيف</li>
+<li>قناع التقشير → ضعي طبقة رقيقة واتركيها حتى تجف ثم أزيليها</li>
+<li>الكريم المغذي → الخاتمة، دلّكي بلطف على الوجه والرقبة</li>
+</ol>
+<div class="tip">💡 استخدميها كل مساء بعد إزالة المكياج للحصول على أفضل النتائج.</div>`
     },
     {
         category: "skincare",
         name: "THE FAME Cilt Bakım Seti",
-        sub: "THE FAME Skincare Set",
-        priceTL: 5234.28,
-        qty: 10,
-        img: "https://image.atomy.com/ID/goods/I00003/org/319/240926000025319.jpg?w=400&h=400"
+        arabic: "مجموعة العناية بالبشرة ذا فام",
+        korean: "애터미 더 훼임 스킨케어 (5종)",
+        priceTL: 5234.28, qty: 10,
+        img: "https://image.atomy.com/ID/goods/I00003/org/319/240926000025319.jpg?w=400&h=400",
+        desc: `<h4>مجموعة العناية بالبشرة ذا فام (5 قطع)</h4>
+مجموعة العناية الشاملة بالبشرة من ذا فام تحتوي على 5 منتجات: التونر، اللوشن، السيرم، كريم العين، والكريم المغذي. تطوّرت بتقنيات حاصلة على براءة اختراع لترطيب عميق وتحسين مرونة البشرة.
+<strong>النتائج:</strong> ترطيب عميق، بشرة مشرقة ومتألقة، مرونة محسّنة، ملمس ناعم.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>التونر → بعد التنظيف، ضعي بقطعة قطنية ودلّكي بلطف</li>
+<li>السيرم → ضعي 2-3 نقاط على الوجه وربّتي بلطف</li>
+<li>كريم العين → بحركات نقر خفيفة حول منطقة العينين</li>
+<li>اللوشن → وزّعي على الوجه والرقبة</li>
+<li>الكريم المغذي → الخاتمة، ضعي كمية مناسبة وربّتي</li>
+</ol>
+<div class="tip">💡 استخدميها صباحاً ومساءً للحصول على أفضل النتائج.</div>`
     },
     {
         category: "skincare",
         name: "Absolute CellActive Cilt Bakım Seti",
-        sub: "Absolute CellActive Skincare Set",
-        priceTL: 11019.60,
-        qty: 4,
-        img: "https://image.atomy.com/ID/goods/I00207/org/207/240930000025207.jpg?w=400&h=400"
+        arabic: "مجموعة العناية بالبشرة أبسولوت سيل أكتيف",
+        korean: "애터미 앱솔루트 셀랙티브 스킨케어 (6종)",
+        priceTL: 11019.60, qty: 4,
+        img: "https://image.atomy.com/TR/goods/E00207/org/599/251003000047599.jpg?w=400&h=400",
+        desc: `<h4>مجموعة العناية بالبشرة أبسولوت سيل أكتيف (6 قطع)</h4>
+مجموعة العناية الشاملة بالبشرة من أبسولوت تحتوي على 6 منتجات تعمل معاً لترطيب البشرة بعمق وتحسين مرونتها وإشراقتها. مكونة من التونر، اللوشن، السيرم، الأمبول، كريم العين، والكريم المغذي.
+<strong>النتائج:</strong> ترطيب عميق، بشرة مشرقة ومتألقة، مرونة محسّنة، ملمس ناعم ونضيف.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>التونر → بعد التنظيف، ضعي بقطعة قطنية ودلّكي بلطف</li>
+<li>السيرم → ضعي 2-3 نقاط على الوجه وربّتي بلطف</li>
+<li>الأمبول → ضعي كمية صغيرة وربّتي حتى الامتصاص الكامل</li>
+<li>اللوشن → وزّعي على الوجه والرقبة</li>
+<li>كريم العين → ضعي بحركات نقر خفيفة حول العينين</li>
+<li>الكريم المغذي → الخاتمة، ضعي كمية مناسبة وربّتي بلطف</li>
+</ol>
+<div class="tip">💡 استخدميها صباحاً ومساءً للحصول على أفضل النتائج.</div>`
     },
     {
         category: "skincare",
         name: "Derma Real Cica Set",
-        sub: "Derma Real Cica Set",
-        priceTL: 3103.08,
-        qty: 4,
-        img: "https://image.atomy.com/EU/goods/700759/org/759/thumb_700759_0001.jpg?w=400&h=400"
+        arabic: "مجموعة ديرما ريل سيكا",
+        korean: "애터미 더마 리얼 시카 (3종)",
+        priceTL: 3103.08, qty: 4,
+        img: "https://image.atomy.com/EU/goods/700759/org/759/thumb_700759_0001.jpg?w=400&h=400",
+        desc: `<h4>مجموعة ديرما ريل سيكا (3 قطع)</h4>
+مجموعة العناية بالبشرة الحساسة تحتوي على 3 منتجات: التونر، الأمبول، والكريم. مكونة من مستخلص نبات السنتيلا الآسيوية لتهدئة البشرة المتهيجة وتقوية حاجزها الطبيعي.
+<strong>النتائج:</strong> تهدئة البشرة الحساسة، تقليل الاحمرار، تقوية حاجز البشرة، ترطيب عميق.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>التونر → ضعي على الوجه بعد التنظيف كخطوة أولى</li>
+<li>الأمبول → ضعي كمية صغيرة على المناطق الحساسة وربّتي بلطف</li>
+<li>الكريم → الخاتمة، وزّعي كمية مناسبة على الوجه والرقبة</li>
+</ol>
+<div class="tip">💡 مثالية للبشرة الحساسة أو المتهيجة. استخدميها صباحاً ومساءً.</div>`
     },
-    // SUNCARE
     {
         category: "suncare",
         name: "Absolute Essence UV Güneş Koruyucu",
-        sub: "Absolute Essence Sunscreen",
-        priceTL: 713.69,
-        qty: 6,
-        img: "https://image.atomy.com/TR/goods/E00276/org/374/250610000042374.jpg?w=400&h=400"
+        arabic: "واقي شمس أبسولوت إيسنس UV",
+        korean: "애터미 선크림 화이트",
+        priceTL: 713.69, qty: 6,
+        img: "https://image.atomy.com/TR/goods/E00276/org/374/250610000042374.jpg?w=400&h=400",
+        desc: `<h4>واقي شمس أبسولوت إيسنس</h4>
+واقي شمس خفيف بتركيبة مائية يوفر حماية عالية من أشعة UVA وUVB دون ترك أثر أبيض. يحتوي على مستخلصات طبيعية ترطب البشرة أثناء الحماية.
+<strong>النتائج:</strong> حماية من الشمس، بشرة رطبة، ملمس خفيف وغير دهني.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية مناسبة في الخطوة الأخيرة من روتين العناية الصباحي</li>
+<li>وزّعي بالتساوي على الوجه والرقبة</li>
+<li>أعيدي التطبيق كل ساعتين عند التعرض المباشر للشمس</li>
+</ol>
+<div class="tip">💡 يمكن استخدامه كقاعدة للمكياج لملمس طبيعي وناعم.</div>`
     },
-    // MASKS
     {
         category: "masks",
         name: "Evening Care Soyulabilir Maske",
-        sub: "Evening Care Peel-Off Mask",
-        priceTL: 493.15,
-        qty: 2,
-        img: "https://image.atomy.com/ID/goods/I00335/org/962/241031000028962.jpg?w=400&h=400"
+        arabic: "قناع تقشير العناية المسائية",
+        korean: "애터미 이브닝케어 필오프마스크",
+        priceTL: 493.15, qty: 2,
+        img: "https://image.atomy.com/ID/goods/I00335/org/962/241031000028962.jpg?w=400&h=400",
+        desc: `<h4>قناع التقشير المسائي</h4>
+قناع تقشير عملي يزيل الخلايا الميتة والشوائب بلطف. يترك على البشرة حتى يجف ثم يُقشّر برفق ليكشف عن بشرة ناعمة ومشرقة.
+<strong>النتائج:</strong> بشرة ناعمة ونضرة، تقشير لطيف، مسام نظيفة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي طبقة متساوية على الوجه النظيف (تجنّبي منطقة العين والشفاه)</li>
+<li>انتظري 15-20 دقيقة حتى يجف تماماً</li>
+<li>أزيلي القناع بلطف من الأسفل إلى الأعلى</li>
+<li>اغسلي الوجه ووضّعي الكريم المرطّب</li>
+</ol>
+<div class="tip">💡 استخدميه مرتين أسبوعياً لنتائج أفضل.</div>`
     },
     {
         category: "masks",
         name: "Marine Göz Bandı",
-        sub: "Marine Gel Mask (Eye Band)",
-        priceTL: 787.69,
-        qty: 4,
-        img: "https://image.atomy.com/ID/goods/I00464/org/661/240930000025661.jpg?w=400&h=400"
+        arabic: "ماسك مارين للعين",
+        korean: "애터미 마린 젤 마스크",
+        priceTL: 787.69, qty: 4,
+        img: "https://image.atomy.com/ID/goods/I00464/org/661/240930000025661.jpg?w=400&h=400",
+        desc: `<h4>ماسك مارين للعين</h4>
+شرائط جل مائية تحتوي على مستخلصات بحرية طبيعية لترطيب وتنعيم منطقة العين. تخفف من الانتفاخ والهالات السوداء.
+<strong>النتائج:</strong> ترطيب منطقة العين، تقليل الانتفاخ، ملمس منعش ونضر.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه بلطف</li>
+<li>ضعي الشرائط تحت العينين</li>
+<li>انتظري 20-30 دقيقة</li>
+<li>أزيلي بلطف ودلّكي الفائض حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 يمكن حفظه في الثلاجة قبل الاستخدام لمزيد من الانتعاش.</div>`
     },
     {
         category: "masks",
         name: "Daily Expert Maske (Aydınlatıcı)",
-        sub: "Daily Expert Mask — Illuminating *10",
-        priceTL: 554.11,
-        qty: 5,
-        img: "https://image.atomy.com/ID/goods/I00466/org/687/240930000025687.jpg?w=400&h=400"
+        arabic: "ماسك ديلي إكسبرت المُنوِّر ×10",
+        korean: "애터미 데일리 엑스퍼트 마스크 광채브라이트닝",
+        priceTL: 554.11, qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00466/org/687/240930000025687.jpg?w=400&h=400",
+        desc: `<h4>ماسك ديلي إكسبرت المُنوِّر (10 قطع)</h4>
+أقنعة ورقية يومية بتركيبة مركّزة لإضفاء الإشراق والنضارة على البشرة الباهتة. كل قناع مشبع بسيروم مكثف للعناية العميقة.
+<strong>النتائج:</strong> بشرة مشرقة ومتألقة، ترطيب مكثف، ملمس ناعم وصحي.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه</li>
+<li>ضعي القناع على الوجه وتأكدي من التصاقه بالبشرة</li>
+<li>انتظري 15-20 دقيقة</li>
+<li>أزيلي القناع ودلّكي السيروم المتبقي حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 استخدمي قناع واحد يومياً كجزء من روتينك المسائي.</div>`
     },
-    // HAIRCARE
+    {
+        category: "masks",
+        name: "Daily Expert Maske (Nemlendirici)",
+        arabic: "ماسك ديلي إكسبرت المُرطِّب ×10",
+        korean: "애터미 데일리 엑스퍼트 마스크 모이스처라이징",
+        priceTL: 554.11, qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00465/org/679/240930000025679.jpg?w=400&h=400",
+        desc: `<h4>ماسك ديلي إكسبرت المُرطِّب (10 قطع)</h4>
+أقنعة ورقية يومية بتركيبة مركّزة لترطيب البشرة الجافة. تحتوي على حمض الهيالورونيك والسيراميد لبشرة ناعمة ورطبة.
+<strong>النتائج:</strong> ترطيب عميق، بشرة ناعمة وصحية، حماية من الجفاف.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه</li>
+<li>ضعي القناع على الوجه وتأكدي من التصاقه بالبشرة</li>
+<li>انتظري 15-20 دقيقة</li>
+<li>أزيلي القناع ودلّكي السيروم المتبقي حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 مثالي للبشرة الجافة. استخدميه يومياً للحصول على أفضل النتائج.</div>`
+    },
+    {
+        category: "masks",
+        name: "Daily Expert Maske 3 (Sıkılaştırıcı)",
+        arabic: "ماسك ديلي إكسبرت 3 المشدّ ×10",
+        korean: "애터미 데일리 엑스퍼트 마스크 3 파밍",
+        priceTL: 554.11, qty: 5,
+        img: "https://image.atomy.com/TR/goods/E00467/org/658/250613000042658.jpg?w=400&h=400",
+        desc: `<h4>ماسك ديلي إكسبرت 3 المشدّ (10 قطع)</h4>
+أقنعة ورقية يومية بتركيبة مركّزة لشدّ البشرة وتحسين مرونتها. تحتوي على الببتيدات والكولاجين لتقليل التجاعيد.
+<strong>النتائج:</strong> بشرة مشدودة ومتينة، مرونة محسّنة، تقليل مظهر التجاعيد.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه</li>
+<li>ضعي القناع على الوجه وتأكدي من التصاقه بالبشرة</li>
+<li>انتظري 15-20 دقيقة</li>
+<li>أزيلي القناع ودلّكي السيروم المتبقي حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 مثالي للبشرة الناضجة. استخدميه يومياً لنتائج مشهودة.</div>`
+    },
+    {
+        category: "masks",
+        name: "Marine Jel Maske (Nemlendirici & Yatıştırıcı)",
+        arabic: "ماسك مارين جل المُرطِّب والمُهدئ ×10",
+        korean: "애터미 마린 앰플 젤 마스크 모이스처라이징 & 소딩",
+        priceTL: 1414.14, qty: 4,
+        img: "https://image.atomy.com/MY/goods/M00462/org/449/241024000028449.jpg?w=400&h=400",
+        desc: `<h4>ماسك مارين جل المُرطِّب والمُهدئ (10 قطع)</h4>
+أقنعة هيدروجيل بحرية غنية بمستخلصات الكولاجين البحري والنباتات البحرية. تُرطّب البشرة بعمق وتُهدئها فوراً.
+<strong>النتائج:</strong> ترطيب مكثف، تهدئة فورية، بشرة ناعمة ومشرقة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه</li>
+<li>ضعي القناع الجل وتأكدي من التصاقه بالبشرة</li>
+<li>انتظري 20-30 دقيقة</li>
+<li>أزيلي القناع ودلّكي السيروم المتبقي حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 يمكن إذابة القناع في حمام دافئ لترطيب الجسم أيضاً.</div>`
+    },
+    {
+        category: "masks",
+        name: "Marine Jel Maske (Aydınlatıcı & Sıkılaştırıcı)",
+        arabic: "ماسك مارين جل المُنوِّر والمشدّ ×10",
+        korean: "애터미 마린 앰플 젤 마스크 브라이트닝 & 파밍",
+        priceTL: 1414.14, qty: 4,
+        img: "https://image.atomy.com/MY/goods/M00463/org/430/241024000028430.jpg?w=400&h=400",
+        desc: `<h4>ماسك مارين جل المُنوِّر والمشدّ (10 قطع)</h4>
+أقنعة هيدروجيل بحرية تحتوي على مستخلص اللؤلؤ والنياسيناميد لإشراق البشرة وتحسين مرونتها.
+<strong>النتائج:</strong> بشرة مشرقة، مرونة محسّنة، ملمس ناعم ونضيف.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>نظّفي الوجه وجفّفيه</li>
+<li>ضعي القناع الجل وتأكدي من التصاقه بالبشرة</li>
+<li>انتظري 20-30 دقيقة</li>
+<li>أزيلي القناع ودلّكي السيروم المتبقي حتى الامتصاص</li>
+</ol>
+<div class="tip">💡 مثالي للبشرة الباهتة والمرهقة. استخدميه مرتين أسبوعياً.</div>`
+    },
     {
         category: "haircare",
         name: "Scalpcare Şampuan + Saç Kremi",
-        sub: "Scalpcare Shampoo + Conditioner Set",
-        priceTL: 1216.51,
-        qty: 2,
-        img: "https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0001.jpg?w=400&h=400"
+        arabic: "شامبو + بلسم سكالب كير",
+        korean: "애تر미 스캘프케어 샴푸",
+        priceTL: 1216.51, qty: 2,
+        img: "https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0001.jpg?w=400&h=400",
+        desc: `<h4>شامبو وبلسم سكالب كير</h4>
+شامبو وبلسم متخصصان في العناية بفروة الرأس. ينظف الشعر بلطف ويغذيه من الجذور مع الحفاظ على توازن الرطوبة الطبيعي للفروة.
+<strong>النتائج:</strong> شعر نظيف ولامع، فروة صحية، تحكم في القشرة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>بلّلي الشعر جيداً بالماء</li>
+<li>ضعي الشامبو ودلّكي فروة الرأس بلطف</li>
+<li>اشطفي جيداً ثم ضعي البلسم من منتصف الشعر إلى الأطراف</li>
+<li>انتظري 2-3 دقائق ثم اشطفي</li>
+</ol>
+<div class="tip">💡 مناسب للاستخدام اليومي حتى للشعر الحساس.</div>`
     },
     {
         category: "haircare",
         name: "Atomy Saengmodan Saç Toniği",
-        sub: "Sengmo Dansu Hair Tonic",
-        priceTL: 538.19,
-        qty: 5,
-        img: "https://image.atomy.com/CA/goods/C00620/org/976/241216000032976.jpg?w=400&h=400"
+        arabic: "تونيك شعر سينغمو دان",
+        korean: "애터미 생모단수",
+        priceTL: 538.19, qty: 5,
+        img: "https://image.atomy.com/CA/goods/C00620/org/976/241216000032976.jpg?w=400&h=400",
+        desc: `<h4>تونيك شعر سينغمو دان</h4>
+تونيك شعر مغذّي يحتوي على مستخلصات نباتية طبيعية تقوّي جذور الشعر وتحفز نموه. يرطب الفروة ويمنح الشعر مظهراً صحياً وكثيفاً.
+<strong>النتائج:</strong> تقوية جذور الشعر، تحفيز النمو، فروة مرطبة وصحية.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>رشّي كمية مناسبة على فروة الرأس الجافة أو الرطبة</li>
+<li>دلّكي بلطف بأطراف الأصابع</li>
+<li>لا تحتاجين لشطفه</li>
+</ol>
+<div class="tip">💡 استخدميه مرتين يومياً (صباحاً ومساءً) للحصول على أفضل النتائج.</div>`
     },
     {
         category: "haircare",
         name: "Hair Oil Complex",
-        sub: "Hair Oil Complex",
-        priceTL: 602.64,
-        qty: 3,
-        img: "https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0001.png?w=400&h=400"
+        arabic: "زيت شعر كومبلكس",
+        korean: "애터미 컬링 에센스",
+        priceTL: 602.64, qty: 3,
+        img: "https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0001.png?w=400&h=400",
+        desc: `<h4>زيت شعر كومبلكس</h4>
+زيت شعر متعدد الفوائد يحتوي على مزيج من الزيوت الطبيعية. يغذي الشعر من الداخل ويحميه من الجفاف والتلف مع منحه لمعاناً صحياً.
+<strong>النتائج:</strong> شعر لامع ومرطّب، حماية من الجفاف، أطراف غير متقصفة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي 1-2 ضخة على راحة اليد</li>
+<li>وزّعي على أطراف الشعر الجاف أو الرطب</li>
+<li>تجنّبي الجذور والفروة</li>
+</ol>
+<div class="tip">💡 ضعي كمية قليلة قبل تصفيف الشعر للحماية من الحرارة.</div>`
     },
-    // BODYCARE
     {
         category: "bodycare",
         name: "Atomy Bitkisel Vücut Temizleyici",
-        sub: "Herbal Body Wash",
-        priceTL: 505.02,
-        qty: 1,
-        img: "https://image.atomy.com/SG/goods/S00635/org/080/241022000028080.jpg?w=400&h=400"
+        arabic: "غسول الجسم العشبي",
+        korean: "애터미 한방 바디 클렌저",
+        priceTL: 505.02, qty: 1,
+        img: "https://image.atomy.com/SG/goods/S00635/org/080/241022000028080.jpg?w=400&h=400",
+        desc: `<h4>غسول الجسم العشبي</h4>
+غسول جسم يحتوي على مستخلصات أعشاب طبيعية ينظف البشرة بلطف دون تجفيفها. يترك الجسم نظيفاً ونضراً ورائحته منعشة.
+<strong>النتائج:</strong> بشرة نظيفة ونضرة، ترطيب طبيعي، رائحة منعشة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>بلّلي الجسم بالماء</li>
+<li>ضعي كمية مناسبة على الإسفنجة أو اليد</li>
+<li>دلّكي الجسم بلطف ثم اشطفي جيداً</li>
+</ol>
+<div class="tip">💡 مناسب للاستخدام اليومي حتى للبشرة الحساسة.</div>`
     },
     {
         category: "bodycare",
         name: "Atomy El Kremi",
-        sub: "Hand Cream",
-        priceTL: 596.75,
-        qty: 5,
-        img: "https://image.atomy.com/CA/goods/C00542/org/542/thumb_a6f6baa7-d835-468a-a67c-63bc31572f5d.jpg?w=400&h=400"
+        arabic: "كريم اليد",
+        korean: "애터미 핸드크림",
+        priceTL: 596.75, qty: 5,
+        img: "https://image.atomy.com/CA/goods/C00542/org/542/thumb_a6f6baa7-d835-468a-a67c-63bc31572f5d.jpg?w=400&h=400",
+        desc: `<h4>كريم اليد</h4>
+كريم يد مرطّب سريع الامتصاص يغذي بشرة اليدين ويحميها من الجفاف. تركيبته خفيفة ولا تترك أثراً دهنياً.
+<strong>النتائج:</strong> يدا ناعمتان ومرطبتان، حماية من الجفاف والتشقق، امتصاص سريع.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية صغيرة على راحة اليد</li>
+<li>دلّكي اليدين والمناطق الجافة</li>
+<li>استخدمي حسب الحاجة طوال اليوم</li>
+</ol>
+<div class="tip">💡 ضعي طبقة إضافية قبل النوم لترطيب مكثف طوال الليل.</div>`
     },
     {
         category: "bodycare",
         name: "Atomy Vücut Losyonu",
-        sub: "Body Lotion",
-        priceTL: 318.76,
-        qty: 5,
-        img: "https://image.atomy.com/ID/goods/I00645/org/816/240930000025816.jpg?w=400&h=400"
+        arabic: "لوشن الجسم",
+        korean: "애تر미 바디로션",
+        priceTL: 318.76, qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00645/org/816/240930000025816.jpg?w=400&h=400",
+        desc: `<h4>لوشن الجسم</h4>
+لوشن جسم خفيف يرطب البشرة بعمق ويمنحها نعومة ومرونة. يمتص بسرعة دون ترك أثر لزج.
+<strong>النتائج:</strong> بشرة ناعمة ومرطبة، ملمس حريري، رائحة خفيفة ومنعشة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية مناسبة على الجسم بعد الاستحمام</li>
+<li>وزّعي بالتساوي ودلّكي بلطف</li>
+</ol>
+<div class="tip">💡 أفضل وقت للاستخدام بعد الاستحمام مباشرة على بشرة رطبة.</div>`
     },
     {
         category: "bodycare",
         name: "Rich Body Vücut Kremi",
-        sub: "Rich Body Cream",
-        priceTL: 532.25,
-        qty: 5,
-        img: "https://image.atomy.com/EU/goods/700647/org/647/thumb_700647_0001.jpg?w=400&h=400"
+        arabic: "كريم الجسم ريتش",
+        korean: "애터미 울트라 리치 바디워시",
+        priceTL: 532.25, qty: 5,
+        img: "https://image.atomy.com/EU/goods/700647/org/647/thumb_700647_0001.jpg?w=400&h=400",
+        desc: `<h4>كريم الجسم ريتش</h4>
+كريم جسم مكثف يوفر ترطيباً عميقاً وتغذية فائقة للبشرة الجافة. تركيبته غنية تغلف البشرة بطبقة حماية طويلة الأمد.
+<strong>النتائج:</strong> ترطيب مكثف، بشرة ناعمة ومحمية، ملمس حريري.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية وفيرة على الجسم</li>
+<li>دلّكي بحركات دائرية حتى الامتصاص الكامل</li>
+<li>ركزي على المناطق الجافة كالمرفقين والركبتين</li>
+</ol>
+<div class="tip">💡 مثالي للاستخدام في فصل الشتاء أو للبشرة الجافة جداً.</div>`
     },
-    // ORAL CARE
     {
         category: "oralcare",
         name: "Diş Fırçası * 8 Adet",
-        sub: "Toothbrush * 8",
-        priceTL: 464.36,
-        qty: 12,
-        img: "https://image.atomy.com/SG/goods/S00510/org/043/241118000030043.jpg?w=400&h=400"
+        arabic: "فرشاة أسنان ×8",
+        korean: "애터미 칫솔 (1팩/8개입)",
+        priceTL: 464.36, qty: 12,
+        img: "https://image.atomy.com/SG/goods/S00510/org/043/241118000030043.jpg?w=400&h=400",
+        desc: `<h4>فرشاة أسنان (8 قطع)</h4>
+فرشاة أسنان بتصميم مريح وشعيرات ناعمة تنظف الأسنان واللثة بلطف. مقبضها مصمم ليكون مريحاً وسهل الاستخدام.
+<strong>النتائج:</strong> تنظيف فعّال، حماية اللثة، ملمس مريح.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية صغيرة من المعجون</li>
+<li>افركي بلطف بحركات دائرية لمدة دقيقتين</li>
+<li>غيّري الفرشاة كل 3 أشهر</li>
+</ol>
+<div class="tip">💡 علبة واحدة تكفي عائلة صغيرة لمدة عام كامل.</div>`
     },
     {
         category: "oralcare",
         name: "Diş Macunu 200g * 5 Adet",
-        sub: "Toothpaste 200g * 5",
-        priceTL: 720.82,
-        qty: 5,
-        img: "https://image.atomy.com/ID/goods/I00505/org/425/241015000027425.jpg?w=400&h=400"
+        arabic: "معجون أسنان 200جم ×5",
+        korean: "애터미 치약 플러스 200g (5ea)",
+        priceTL: 720.82, qty: 5,
+        img: "https://image.atomy.com/ID/goods/I00505/org/425/241015000027425.jpg?w=400&h=400",
+        desc: `<h4>معجون أسنان 200جم (5 قطع)</h4>
+معجون أسنان يحتوي على مكونات طبيعية تنظف الأسنان بلطف وتحمي اللثة وتمنع التسوس. نكهته منعشة وتترك الفم نظيفاً طوال اليوم.
+<strong>النتائج:</strong> أسنان نظيفة وبيضاء، حماية من التسوس، نفس منعش.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ضعي كمية صغيرة بحجم حبة البازلاء على الفرشاة</li>
+<li>افركي لمدة دقيقتين على الأقل</li>
+<li>اشطفي جيداً</li>
+</ol>
+<div class="tip">💡 أنبوب واحد يكفي لشخص واحد حوالي 3 أشهر.</div>`
     },
     {
         category: "oralcare",
         name: "Ağız Bakım Seti *4 Set",
-        sub: "Oral Care Set *4",
-        priceTL: 606.01,
-        qty: 6,
-        img: "https://image.atomy.com/ID/goods/I00520/org/520/240930000025520.jpg?w=400&h=400"
+        arabic: "مجموعة العناية بالفم ×4",
+        korean: "애تر미 오랄케어 시스템 (1박스/4세트)",
+        priceTL: 606.01, qty: 6,
+        img: "https://image.atomy.com/TR/goods/E00520/org/861/250617000042861.jpg?w=400&h=400",
+        desc: `<h4>مجموعة العناية بالفم (4 قطع)</h4>
+مجموعة شاملة للعناية بالفم تحتوي على فرشاة أسنان ومعجون. توفر حلاً متكاملاً لنظافة الفم والأسنان واللثة.
+<strong>النتائج:</strong> نظافة فم شاملة، أسنان نظيفة، لثة صحية.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>استخدمي الفرشاة والمعجون مرتين يومياً</li>
+<li>افركي بلطف بحركات دائرية لمدة دقيقتين</li>
+<li>اشطفي جيداً</li>
+</ol>
+<div class="tip">💡 مثالية كهدية أو للاستخدام العائلي اليومي.</div>`
     },
-    // HOUSEHOLD
     {
         category: "household",
         name: "Atomy Lateks Bulaşık Eldiveni (L) *2",
-        sub: "Natural Latex Gloves *2 Pairs",
-        priceTL: 209.95,
-        qty: 8,
-        img: "https://image.atomy.com/US/goods/A00834/org/856/241203000031856.jpg?w=400&h=400"
+        arabic: "قفازات لاتكس للمطبخ ×2",
+        korean: "애터미 고무장갑 (중/대) *2세트",
+        priceTL: 209.95, qty: 8,
+        img: "https://image.atomy.com/US/goods/A00834/org/856/241203000031856.jpg?w=400&h=400",
+        desc: `<h4>قفازات لاتكس للمطبخ (2 زوج)</h4>
+قفازات مطبخ من اللاتكس الطبيعي مقاومة للماء والمواد الدهنية. مريحة ومتينة للاستخدام اليومي في أعمال المطبخ والتنظيف.
+<strong>النتائج:</strong> حماية اليدين، مقاومة للماء والدهون، ملمس مريح.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>ارتدي القفازات قبل بدء العمل</li>
+<li>استخدميها في غسل الأطباق أو التنظيف</li>
+<li>اغسليها بعد الاستخدام وجفّفيها بالهواء</li>
+</ol>
+<div class="tip">💡 مثالية للأشخاص الذين يعانون من حساسية المواد الكيميائية المنزلية.</div>`
     },
+    {
+        category: "bodycare",
+        name: "Travel Kit",
+        arabic: "طقم السفر",
+        korean: "애터미 트래블 키트",
+        priceTL: 300, qty: 3,
+        img: "",
+        desc: `<h4>طقم السفر</h4>
+مجموعة متناهية الصغر مثالية للسفر تحتوي على منتجات العناية بالبشرة والجسم بحجم مناسب للحقائب. تشمل الشامبو، البلسم، غسول الجسم، وكريم اليد.
+<strong>النتائج:</strong> عناية شاملة أثناء السفر، حجم عملي، ترطيب ونظافة.
+<strong>طريقة الاستخدام:</strong>
+<ol>
+<li>استخدمي كل منتج حسب الحاجة أثناء السفر</li>
+<li>أعيدي تعبئة الحاويات الصغيرة عند نفادها</li>
+<li>احفظيها في حقيبة التجميل أو حقيبة اليد</li>
+</ol>
+<div class="tip">💡 مثالية للرحلات القصيرة والعطلات. حجم كل منتج يفي بمعايير الطيران.</div>`
+    }
 ];
 
-function createCard(p) {
+function createCard(p, index) {
     const srpUSD = (p.priceTL * MULTIPLIER / RATE).toFixed(2);
+    const descId = 'desc-' + index;
+    const arrowId = 'arrow-' + index;
+    const imgHtml = p.img
+        ? `<img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#eef3f7';this.alt='Image unavailable'">`
+        : `<div class="card-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;background:#fafbfc;">🧴</div>`;
     return `
         <div class="card">
-            <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#eef3f7';this.alt='Image unavailable'">
+            ${imgHtml}
             <div class="card-body">
-                <div class="qty-badge">Qty: ${p.qty}</div>
                 <div class="card-name">${p.name}</div>
-                <div class="card-sub">${p.sub} &middot; ₺${p.priceTL.toLocaleString('tr-TR')}</div>
-                <div class="card-price">$${parseFloat(srpUSD).toLocaleString('en-US', {minimumFractionDigits:2})} <span class="currency">SRP</span></div>
+                <div class="card-ar">${p.arabic || ''}</div>
+                <div class="card-kr">${p.korean || ''}</div>
+                <div class="card-price">$${parseFloat(srpUSD).toLocaleString('en-US', {minimumFractionDigits:2})}</div>
+                <div class="desc-toggle" onclick="toggleDesc('${descId}','${arrowId}')">
+                    <span class="desc-toggle-label">📖 الوصف وطريقة الاستخدام</span>
+                    <span class="desc-arrow" id="${arrowId}">▼</span>
+                </div>
+                <div class="desc-content" id="${descId}">
+                    <div class="desc-inner">${p.desc}</div>
+                </div>
             </div>
         </div>
     `;
 }
 
-// Render
-const categories = ['skincare', 'suncare', 'masks', 'haircare', 'bodycare', 'oralcare', 'household'];
-let totalProducts = products.length;
-let totalUnits = 0;
-let totalSRP = 0;
-let totalTurkey = 0;
-let totalProfit = 0;
+function toggleDesc(id, arrowId) {
+    const el = document.getElementById(id);
+    const arrow = document.getElementById(arrowId);
+    el.classList.toggle('open');
+    arrow.classList.toggle('open');
+}
 
+const categories = ['skincare', 'suncare', 'masks', 'haircare', 'bodycare', 'oralcare', 'household'];
+let idx = 0;
 categories.forEach(cat => {
     const container = document.getElementById(cat);
     if (!container) return;
     const catProducts = products.filter(p => p.category === cat);
-    container.innerHTML = catProducts.map(createCard).join('');
-    catProducts.forEach(p => {
-        totalUnits += p.qty;
-        const unitSRP = p.priceTL * MULTIPLIER / RATE;
-        totalSRP += unitSRP * p.qty;
-        totalTurkey += p.priceTL * p.qty;
-        totalProfit += (p.priceTL * MULTIPLIER - p.priceTL) * p.qty / RATE;
-    });
+    container.innerHTML = catProducts.map(p => createCard(p, idx++)).join('');
 });
-
-// Update stats
-document.getElementById('totalItems').textContent = totalProducts;
-document.getElementById('totalUnits').textContent = totalUnits;
-document.getElementById('totalUSD').textContent = '$' + Math.round(totalSRP).toLocaleString();
-
-document.getElementById('sumProducts').textContent = totalProducts;
-document.getElementById('sumUnits').textContent = totalUnits;
-document.getElementById('sumTurkey').textContent = '₺' + Math.round(totalTurkey).toLocaleString('tr-TR');
-document.getElementById('sumSRP').textContent = '$' + Math.round(totalSRP).toLocaleString();
-document.getElementById('sumProfit').textContent = '$' + Math.round(totalProfit).toLocaleString();
 </script>
 
 </body>
