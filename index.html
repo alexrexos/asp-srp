@@ -707,13 +707,12 @@ function toggleDesc(id, arrowId) {
     arrow.classList.toggle('open');
 }
 
-const categories = ['skincare', 'suncare', 'masks', 'haircare', 'bodycare', 'oralcare', 'household'];
-let idx = 0;
-categories.forEach(cat => {
-    const container = document.getElementById(cat);
-    if (!container) return;
-    const catProducts = products.filter(p => p.category === cat).sort((a, b) => a.priceTL - b.priceTL);
-    container.innerHTML = catProducts.map(p => createCard(p, idx++)).join('');
+const allSorted = [...products].sort((a, b) => a.priceTL - b.priceTL);
+const first = document.getElementById('skincare');
+if (first) first.innerHTML = allSorted.map((p, i) => createCard(p, i)).join('');
+['suncare','masks','haircare','bodycare','oralcare','household'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.parentElement.style.display = 'none';
 });
 </script>
 
