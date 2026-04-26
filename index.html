@@ -712,7 +712,7 @@ let idx = 0;
 categories.forEach(cat => {
     const container = document.getElementById(cat);
     if (!container) return;
-    const catProducts = products.filter(p => p.category === cat);
+    const catProducts = products.filter(p => p.category === cat).sort((a, b) => a.priceTL - b.priceTL);
     container.innerHTML = catProducts.map(p => createCard(p, idx++)).join('');
 });
 </script>
