@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "http://69.62.76.208/api/:path*" }
+  ]
+}

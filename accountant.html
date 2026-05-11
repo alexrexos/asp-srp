@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accountant Portal — Syria Atomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+  }
+  .header {
+    background: #ffffff;
+    padding: 16px 0;
+    border-bottom: 1px solid #e8ecf0;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .logo-img { height: 44px; }
+  .header-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+  }
+  .header-title .badge {
+    background: #00B6F0;
+    color: white;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+  .logout-btn {
+    background: #f0f4f8;
+    color: #555;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .logout-btn:hover { background:#e2e8f0; }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    margin: 0 0 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 14px;
+  }
+  .stat {
+    background: #fafbfc;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .stat .label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .03em;
+  }
+  .stat .value {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 6px;
+    color: #333;
+  }
+  .stat.good .value { color: #00B6F0; }
+  .stat.bad .value { color: #dc2626; }
+  .stat.neutral .value { color: #f59e0b; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  th {
+    background: transparent;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: #999;
+    font-weight: 600;
+  }
+
+  button.primary {
+    background: #00B6F0;
+    color: #fff;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    transition: background .2s;
+  }
+  button.primary:hover { background: #0099cc; }
+  button.danger {
+    background: #dc2626;
+    color: #fff;
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+  }
+  button.danger:hover { background: #b91c1c; }
+  button.ghost {
+    background: #f0f4f8;
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #555;
+    font-family: inherit;
+  }
+  button.ghost:hover { background: #e2e8f0; }
+
+  input, select, textarea {
+    font: inherit;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    width: 100%;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #00B6F0;
+    box-shadow: 0 0 0 3px rgba(0,182,240,0.12);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .form-actions {
+    display:flex; gap:10px; align-items:center; margin-top:8px;
+  }
+
+  .login {
+    max-width: 400px;
+    margin: 10vh auto;
+    padding: 32px;
+  }
+  .login h2 {
+    color: #333;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .login .sub {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .login .logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .login .logo-wrap img { height: 50px; }
+
+  .hidden { display: none !important; }
+  .err { color: #dc2626; font-size: 12px; margin-top: 8px; }
+  .ok { color: #0080a0; font-size: 12px; margin-top: 8px; }
+  .row-actions { display: flex; gap: 6px; }
+  .table-wrap { overflow-x: auto; }
+
+  .section-header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom: 16px; gap: 12px; flex-wrap: wrap;
+  }
+  .section-header h2 { margin: 0; }
+
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(20,30,40,0.45);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100; padding: 20px;
+  }
+  .modal {
+    background: #fff; border-radius: 16px;
+    padding: 24px; max-width: 460px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  }
+  .modal h3 { font-size: 16px; margin-bottom: 16px; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-size: 13px;
+  }
+  .empty-state .icon { font-size: 32px; margin-bottom: 8px; }
+
+  @media (max-width:640px) {
+    table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+    main { padding: 16px; }
+    .header-title { display:none; }
+    .stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="login" class="login card">
+  <div class="logo-wrap"><img src="atomy-logo.png" alt="ATOMY"></div>
+  <h2>Accountant Login</h2>
+  <div class="sub">Syria Atomy — Safa Payment Tracker</div>
+  <input id="keyInput" type="password" placeholder="Accountant password" />
+  <div class="err" id="loginErr"></div>
+  <div style="margin-top:14px"><button class="primary" id="loginBtn" style="width:100%">Sign in</button></div>
+</div>
+
+<div id="app" class="hidden">
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <img class="logo-img" src="atomy-logo.png" alt="ATOMY">
+        <span class="header-title">Accountant Portal <span class="badge">Safa Payments</span></span>
+      </div>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+  <main>
+    <!-- Summary Cards -->
+    <div class="card">
+      <h2>Financial Summary</h2>
+      <div class="stats" id="summaryStats">
+        <div class="stat"><div class="label">Total Sales Revenue</div><div class="value" id="statSales">—</div></div>
+        <div class="stat good"><div class="label">Payments Received</div><div class="value" id="statPayments">—</div></div>
+        <div class="stat" id="outstandingCard"><div class="label">Outstanding Balance</div><div class="value" id="statOutstanding">—</div></div>
+      </div>
+    </div>
+
+    <!-- Payment Entry Form -->
+    <div class="card">
+      <div class="section-header">
+        <h2>Record Payment from Safa</h2>
+      </div>
+      <form id="paymentForm">
+        <div class="form-row">
+          <div>
+            <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Amount ($)</div>
+            <input id="pAmount" type="number" step="0.01" min="0.01" placeholder="Amount received" required />
+          </div>
+          <div>
+            <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Payment Date</div>
+            <input id="pDate" type="date" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Note (optional)</div>
+            <input id="pNote" type="text" placeholder="e.g. Cash, Bank transfer, etc." />
+          </div>
+        </div>
+        <div class="err" id="formErr"></div>
+        <div class="form-actions">
+          <button class="primary" type="submit">Record Payment</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Payment History -->
+    <div class="card">
+      <div class="section-header">
+        <h2>Payment History</h2>
+        <span id="paymentCount" style="font-size:12px;color:#999"></span>
+      </div>
+      <div class="table-wrap">
+        <table id="paymentsTbl">
+          <thead>
+            <tr><th>Date</th><th>Amount</th><th>Note</th><th>Recorded</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="paymentsEmpty" class="empty-state hidden">
+        <div class="icon">📋</div>
+        <div>No payments recorded yet</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal-backdrop hidden">
+  <div class="modal">
+    <h3>Edit Payment</h3>
+    <form id="editForm">
+      <input type="hidden" id="eId" />
+      <div class="form-row">
+        <div>
+          <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Amount ($)</div>
+          <input id="eAmount" type="number" step="0.01" min="0.01" required />
+        </div>
+        <div>
+          <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Payment Date</div>
+          <input id="eDate" type="date" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <div style="font-size:11px;color:#999;text-transform:uppercase;font-weight:500;margin-bottom:4px">Note (optional)</div>
+          <input id="eNote" type="text" placeholder="e.g. Cash, Bank transfer, etc." />
+        </div>
+      </div>
+      <div class="err" id="editErr"></div>
+      <div class="form-actions">
+        <button class="ghost" type="button" id="editCancelBtn">Cancel</button>
+        <button class="primary" type="submit">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  const KEY_STORAGE = 'accountantKey';
+  const $ = (id) => document.getElementById(id);
+  const API_BASE = '';
+
+  function getKey() { return sessionStorage.getItem(KEY_STORAGE); }
+  function setKey(k) { sessionStorage.setItem(KEY_STORAGE, k); }
+  function clearKey() { sessionStorage.removeItem(KEY_STORAGE); }
+
+  async function api(path, opts = {}) {
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+    const key = getKey();
+    if (key) headers['X-Accountant-Key'] = key;
+    const res = await fetch(API_BASE + path, { ...opts, headers });
+    if (res.status === 401) { showLogin('Invalid password'); throw new Error('unauthorized'); }
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+    if (!res.ok) throw new Error((data && data.error) || res.statusText);
+    return data;
+  }
+
+  function showLogin(err) {
+    clearKey();
+    $('app').classList.add('hidden');
+    $('login').classList.remove('hidden');
+    $('loginErr').textContent = err || '';
+  }
+  function showApp() {
+    $('login').classList.add('hidden');
+    $('app').classList.remove('hidden');
+    // Set default date to today
+    $('pDate').value = new Date().toISOString().split('T')[0];
+    loadAll();
+  }
+
+  $('loginBtn').addEventListener('click', async () => {
+    const k = $('keyInput').value.trim();
+    if (!k) { $('loginErr').textContent = 'Enter a password'; return; }
+    setKey(k);
+    try {
+      await api('/api/accountant/summary');
+      showApp();
+    } catch (e) { /* showLogin called */ }
+  });
+  $('keyInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('loginBtn').click(); });
+  $('logoutBtn').addEventListener('click', () => showLogin());
+
+  function fmt(n) { return '$' + (Number(n) || 0).toFixed(2); }
+  function fmtDate(s) {
+    try { return new Date(s).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' }); }
+    catch { return s; }
+  }
+  function fmtDateTime(s) {
+    try { return new Date(s).toLocaleString('en-US', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); }
+    catch { return s; }
+  }
+  function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+  // Load summary
+  async function loadSummary() {
+    const d = await api('/api/accountant/summary');
+    $('statSales').textContent = fmt(d.total_sales);
+    $('statPayments').textContent = fmt(d.total_payments);
+    $('statOutstanding').textContent = fmt(d.outstanding);
+
+    const card = $('outstandingCard');
+    card.className = 'stat';
+    if (d.outstanding <= 0) card.classList.add('good');
+    else if (d.outstanding > 0) card.classList.add('neutral');
+    else card.classList.add('bad');
+  }
+
+  // Load payments
+  async function loadPayments() {
+    const list = await api('/api/accountant/payments');
+    const tb = $('paymentsTbl').querySelector('tbody');
+    tb.innerHTML = '';
+    $('paymentCount').textContent = list.length ? list.length + ' record(s)' : '';
+
+    if (list.length === 0) {
+      $('paymentsEmpty').classList.remove('hidden');
+      return;
+    }
+    $('paymentsEmpty').classList.add('hidden');
+
+    for (const p of list) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${fmtDate(p.payment_date)}</td>
+        <td style="font-weight:600;color:#00B6F0">${fmt(p.amount)}</td>
+        <td>${escapeHtml(p.note || '—')}</td>
+        <td style="color:#999;font-size:12px">${fmtDateTime(p.created_at)}</td>
+        <td>
+          <div class="row-actions">
+            <button class="ghost" data-edit="${p.id}">Edit</button>
+            <button class="danger" data-delete="${p.id}">Delete</button>
+          </div>
+        </td>`;
+      tb.appendChild(tr);
+    }
+
+    // Bind edit/delete
+    tb.querySelectorAll('button[data-edit]').forEach(b => {
+      b.addEventListener('click', () => openEdit(Number(b.dataset.edit)));
+    });
+    tb.querySelectorAll('button[data-delete]').forEach(b => {
+      b.addEventListener('click', async () => {
+        if (!confirm('Delete this payment record? This cannot be undone.')) return;
+        try {
+          await api('/api/accountant/payments/' + b.dataset.delete, { method: 'DELETE' });
+          await loadPayments();
+          await loadSummary();
+        } catch (err) { alert(err.message); }
+      });
+    });
+  }
+
+  // Submit payment
+  $('paymentForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('formErr').textContent = '';
+    const payload = {
+      amount: Number($('pAmount').value),
+      payment_date: $('pDate').value,
+      note: $('pNote').value.trim() || null,
+    };
+    try {
+      await api('/api/accountant/payments', { method: 'POST', body: JSON.stringify(payload) });
+      $('paymentForm').reset();
+      $('pDate').value = new Date().toISOString().split('T')[0];
+      await loadPayments();
+      await loadSummary();
+    } catch (err) { $('formErr').textContent = err.message; }
+  });
+
+  // Edit modal
+  function openEdit(id) {
+    api('/api/accountant/payments').then(list => {
+      const p = list.find(x => x.id === id);
+      if (!p) { alert('Payment not found'); return; }
+      $('eId').value = p.id;
+      $('eAmount').value = p.amount;
+      $('eDate').value = p.payment_date;
+      $('eNote').value = p.note || '';
+      $('editErr').textContent = '';
+      $('editModal').classList.remove('hidden');
+    }).catch(err => alert(err.message));
+  }
+  function closeEdit() { $('editModal').classList.add('hidden'); }
+  $('editCancelBtn').addEventListener('click', closeEdit);
+  $('editModal').addEventListener('click', (e) => { if (e.target === $('editModal')) closeEdit(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeEdit(); });
+
+  $('editForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('editErr').textContent = '';
+    const id = $('eId').value;
+    const payload = {
+      amount: Number($('eAmount').value),
+      payment_date: $('eDate').value,
+      note: $('eNote').value.trim() || null,
+    };
+    try {
+      await api('/api/accountant/payments/' + id, { method: 'PATCH', body: JSON.stringify(payload) });
+      closeEdit();
+      await loadPayments();
+      await loadSummary();
+    } catch (err) { $('editErr').textContent = err.message; }
+  });
+
+  async function loadAll() {
+    try {
+      await loadSummary();
+      await loadPayments();
+    } catch (e) { /* unauthorized handled */ }
+  }
+
+  if (getKey()) showApp(); else showLogin();
+})();
+</script>
+</body>
+</html>

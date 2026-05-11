@@ -181,7 +181,7 @@
     </div>
 </div>
 
-<div class="section-title"><h2>Skincare Sets</h2><span class="badge">Premium</span></div>
+<div class="section-title"><h2>جميع المنتجات — مرتبة حسب السعر</h2></div>
 <div class="grid" id="skincare"></div>
 
 <div class="section-title"><h2>Suncare</h2></div>
@@ -618,7 +618,7 @@ const products = [
 <div class="tip">💡 مثالية كهدية أو للاستخدام العائلي اليومي.</div>`
     },
     {
-        category: "household",
+        category: "hidden",
         name: "Atomy Lateks Bulaşık Eldiveni (L) *2",
         arabic: "قفازات لاتكس للمطبخ ×2",
         korean: "애터미 고무장갑 (중/대) *2세트",
@@ -709,11 +709,19 @@ function toggleDesc(id, arrowId) {
 
 const categories = ['skincare', 'suncare', 'masks', 'haircare', 'bodycare', 'oralcare', 'household'];
 let idx = 0;
-categories.forEach(cat => {
-    const container = document.getElementById(cat);
-    if (!container) return;
-    const catProducts = products.filter(p => p.category === cat);
-    container.innerHTML = catProducts.map(p => createCard(p, idx++)).join('');
+// Filter out hidden products (category starts with 'hidden')
+const visibleProducts = products.filter(p => p.category !== 'hidden');
+
+// Sort by USD price (lowest to highest)
+visibleProducts.sort((a, b) => a.priceTL - b.priceTL);
+
+const main = document.getElementById('skincare');
+if (main) main.innerHTML = visibleProducts.map((p, i) => createCard(p, i)).join('');
+document.querySelectorAll('.section-title').forEach((el, i) => {
+    if (i > 0) el.style.display = 'none';
+});
+document.querySelectorAll('.grid').forEach((el, i) => {
+    if (i > 0) el.style.display = 'none';
 });
 </script>
 

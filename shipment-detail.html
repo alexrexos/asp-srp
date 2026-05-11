@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipment — Syria Atomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f7fa;color:#333;min-height:100vh}
+.header{background:#fff;padding:16px 0;border-bottom:1px solid #e8ecf0}
+.header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo-img{height:40px}
+.header-title{font-size:15px;font-weight:600}
+.back-link{color:#00B6F0;text-decoration:none;font-size:13px;font-weight:500}
+.back-link:hover{text-decoration:underline}
+.hero{max-width:900px;margin:24px auto 0;padding:0 24px}
+.hero-card{background:linear-gradient(135deg,#00B6F0,#0090b3);border-radius:16px;padding:28px;color:white;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.hero-card h1{font-size:22px;font-weight:700}
+.hero-card .date{font-size:13px;opacity:.85;margin-top:4px}
+.hero-card .dest{font-size:14px;margin-top:6px;opacity:.95}
+.hero-stats{display:flex;gap:24px}
+.hero-stat .num{font-size:28px;font-weight:700}
+.hero-stat .lbl{font-size:11px;opacity:.8;text-transform:uppercase}
+.badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;margin-top:8px}
+main{max-width:900px;margin:24px auto;padding:0 24px 60px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.btn{padding:10px 18px;border-radius:10px;border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:600;font-family:'Inter',sans-serif}
+.btn.primary{background:#00B6F0;color:#fff}
+.btn.primary:hover{background:#0099cc}
+.btn.success{background:#16a34a;color:#fff}
+.btn.success:hover{background:#15803d}
+.btn.warn{background:#f59e0b;color:#fff}
+.btn.warn:hover{background:#d97706}
+.btn.danger{background:#dc2626;color:#fff}
+.btn.danger:hover{background:#b91c1c}
+.btn.ghost{background:#f0f4f8;color:#555}
+.btn.ghost:hover{background:#e2e8f0}
+.box-card{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.04);margin-bottom:20px;overflow:hidden}
+.box-hdr{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0}
+.box-hdr h2{font-size:16px;font-weight:700;color:#333}
+.box-hdr .wt{font-size:13px;color:#888;font-weight:500}
+.product-row{display:flex;align-items:center;padding:12px 20px;gap:14px;border-bottom:1px solid #f5f5f5}
+.product-row:last-child{border-bottom:none}
+.product-row:hover{background:#fafbfc}
+.p-img{width:120px;height:120px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#f5f5f5;border:1px solid #eee}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.p-info{flex:1;min-width:0}
+.p-name{font-size:14px;font-weight:600;color:#333;line-height:1.3}
+.p-boxes{font-size:12px;color:#888;margin-top:4px}
+.p-qty{min-width:60px;text-align:right}
+.p-qty .n{font-size:26px;font-weight:700;color:#00B6F0;line-height:1}
+.p-qty .u{font-size:11px;color:#999;margin-top:2px}
+.empty{text-align:center;color:#999;padding:32px 16px;font-size:14px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:50}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:90%}
+.modal h3{font-size:16px;margin-bottom:8px}
+.modal p{font-size:14px;color:#666;margin-bottom:16px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+@media(max-width:640px){
+.p-img{width:90px;height:90px;border-radius:8px}
+.p-name{font-size:12px}
+.p-qty .n{font-size:20px}
+.product-row{padding:10px 14px;gap:10px}
+.hero-card h1{font-size:18px}
+}
+.summary-divider{text-align:center;padding:16px 0 24px;position:relative}
+.summary-divider span{background:#f5f7fa;padding:0 16px;position:relative;z-index:1;font-size:13px;color:#999;font-weight:500}
+.summary-divider::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:#ddd}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="admin.html"><img class="logo-img" src="atomy-logo.png" alt="ATOMY"></a>
+      <span class="header-title" id="hdrTitle">Shipment</span>
+    </div>
+    <a href="shipments.html" class="back-link">← All Shipments</a>
+  </div>
+</div>
+
+<div id="root"></div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h3 id="modalTitle">Confirm</h3>
+    <p id="modalMsg"></p>
+    <div class="modal-actions">
+      <button class="btn ghost" id="modalCancel">Cancel</button>
+      <button class="btn danger" id="modalOk">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const params=new URLSearchParams(location.search);
+  const id=Number(params.get('id'));
+  const KEY='adminKey';
+  const getKey=()=>sessionStorage.getItem(KEY);
+
+  async function api(path, opts={}){
+    const headers=Object.assign({'Content-Type':'application/json'}, opts.headers||{});
+    const k=getKey();
+    if(k) headers['X-Admin-Key']=k;
+    const r=await fetch(path,{...opts,headers});
+    if(r.status===401){ location.href='shipments.html'; throw new Error('unauth'); }
+    const t=await r.text();
+    const d=t?JSON.parse(t):null;
+    if(!r.ok) throw new Error((d&&d.error)||r.statusText);
+    return d;
+  }
+
+  function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function fmtDate(s){ try { return new Date(s).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}); } catch { return s; } }
+
+  function modal(title,msg,onOk,okLabel='Confirm',okClass='danger'){
+    $('modalTitle').textContent=title;
+    $('modalMsg').textContent=msg;
+    const ok=$('modalOk');
+    ok.textContent=okLabel;
+    ok.className='btn '+okClass;
+    $('modal').classList.add('show');
+    const close=()=>$('modal').classList.remove('show');
+    $('modalCancel').onclick=close;
+    ok.onclick=()=>{ close(); onOk(); };
+  }
+
+  function actionsFor(s){
+    const id=s.id;
+    if(s.status==='active'){
+      return `
+        <a href="shipment-create.html?id=${id}"><button class="btn ghost">✏️ Edit</button></a>
+        <a href="shipment-create.html?id=${id}#add-box"><button class="btn primary">+ Add Box</button></a>
+        <button class="btn danger" id="btnCancel">🗑️ Cancel</button>
+        <button class="btn success" id="btnDispatch">🚚 Dispatch</button>
+      `;
+    }
+    if(s.status==='dispatched'){
+      return `
+        <a href="shipment-create.html?id=${id}"><button class="btn warn">✏️ Edit (with care)</button></a>
+        <button class="btn success" id="btnReceive">📥 Mark Received</button>
+      `;
+    }
+    return `<span style="color:#999;font-size:13px">View only — shipment received</span>`;
+  }
+
+  function render(s){
+    document.title = `Shipment #${s.shipment_number} — Syria Atomy`;
+    $('hdrTitle').textContent = `Shipment #${s.shipment_number}`;
+
+    const totalBoxes = s.boxes.length;
+    const totalWeight = (s.total_weight||0).toFixed(1);
+
+    let html = '';
+    html += `
+      <div class="hero">
+        <div class="hero-card">
+          <div>
+            <h1>📦 Shipment #${s.shipment_number}</h1>
+            <div class="dest">${escapeHtml(s.destination||'')}</div>
+            <div class="date">${fmtDate(s.created_at)}</div>
+            <span class="badge">${s.status}</span>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="num">${totalBoxes}</div><div class="lbl">Boxes</div></div>
+            <div class="hero-stat"><div class="num">${totalWeight}</div><div class="lbl">kg</div></div>
+          </div>
+        </div>
+      </div>
+      <main>
+        <div class="actions">${actionsFor(s)}</div>
+    `;
+
+    if (s.summary && s.summary.length) {
+      html += `<div class="box-card" style="margin-bottom:32px">
+        <div class="box-hdr" style="background:linear-gradient(135deg,#00B6F0,#0090b3);border:none">
+          <h2 style="color:white;font-size:18px">📋 Shipment Summary — All Products</h2>
+          <span class="wt" style="color:rgba(255,255,255,.85)">${s.summary.length} unique products</span>
+        </div>`;
+      for (const it of s.summary) {
+        const boxes = (it.box_numbers||'').split(',').sort((a,b)=>+a-+b).map(n=>'B'+n).join(', ');
+        html += `<div class="product-row">
+          <div class="p-img">${it.product_image_url?`<img src="${escapeHtml(it.product_image_url)}" alt="">`:''}</div>
+          <div class="p-info">
+            <div class="p-name">${escapeHtml(it.product_name_en)}</div>
+            <div class="p-boxes">Boxes: ${boxes}</div>
+          </div>
+          <div class="p-qty"><div class="n">${it.total_quantity}</div><div class="u">${escapeHtml(it.unit||'pieces')}</div></div>
+        </div>`;
+      }
+      html += `</div>`;
+      html += `<div class="summary-divider"><span>Box-by-box detail</span></div>`;
+    } else {
+      html += `<div class="empty">No boxes yet. <a href="shipment-create.html?id=${s.id}" style="color:#00B6F0">Add one →</a></div>`;
+    }
+
+    for (const box of s.boxes) {
+      html += `<div class="box-card">
+        <div class="box-hdr">
+          <h2>📦 Box #${box.box_number}</h2>
+          <span class="wt">${(box.weight||0).toFixed(1)} kg</span>
+        </div>`;
+      for (const it of box.items) {
+        html += `<div class="product-row">
+          <div class="p-img">${it.product_image_url?`<img src="${escapeHtml(it.product_image_url)}" alt="">`:''}</div>
+          <div class="p-info">
+            <div class="p-name">${escapeHtml(it.product_name_en)}</div>
+          </div>
+          <div class="p-qty"><div class="n">${it.quantity}</div><div class="u">${escapeHtml(it.unit||'pieces')}</div></div>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    html += `</main>`;
+    $('root').innerHTML = html;
+
+    if($('btnCancel')) $('btnCancel').onclick=()=>{
+      modal('Cancel shipment?','This will permanently delete this active shipment and all its boxes.',async()=>{
+        await api('/api/shipments/'+id,{method:'DELETE'});
+        location.href='shipments.html';
+      },'Delete','danger');
+    };
+    if($('btnDispatch')) $('btnDispatch').onclick=()=>{
+      modal('Dispatch shipment?','Mark this shipment as dispatched. You can still mark it received later.',async()=>{
+        await api('/api/shipments/'+id+'/dispatch',{method:'POST'});
+        load();
+      },'Dispatch','success');
+    };
+    if($('btnReceive')) $('btnReceive').onclick=()=>{
+      modal('Mark received?','This will add all box quantities to product stock. Cannot be undone.',async()=>{
+        await api('/api/shipments/'+id+'/receive',{method:'POST'});
+        load();
+      },'Receive','success');
+    };
+  }
+
+  async function load(){
+    if(!id){ $('root').innerHTML='<main><div class="empty">No shipment id</div></main>'; return; }
+    if(!getKey()){ location.href='shipments.html'; return; }
+    try { const s=await api('/api/shipments/'+id); render(s); }
+    catch(e){ $('root').innerHTML=`<main><div class="empty">Error: ${escapeHtml(e.message)}</div></main>`; }
+  }
+  load();
+})();
+</script>
+</body>
+</html>

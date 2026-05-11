@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Syria Atomy — Sales</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+  }
+  body.rtl { direction: rtl; }
+  .header {
+    background: #ffffff;
+    color: #333;
+    padding: 16px 0;
+    border-bottom: 1px solid #e8ecf0;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .logo-img { height: 44px; }
+  .header-title { font-size: 15px; font-weight:600; color:#333; }
+  .lang-btn {
+    background: #00B6F0;
+    color: #fff;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .lang-btn:hover { background:#0099cc; }
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  label {
+    display:block;
+    font-size:13px;
+    color:#555;
+    font-weight:500;
+    margin: 14px 0 6px;
+  }
+  input, select {
+    font: inherit;
+    font-family: 'Inter', sans-serif;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    width: 100%;
+    background:#fff;
+    color:#333;
+    font-size: 14px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: #00B6F0;
+    box-shadow: 0 0 0 3px rgba(0,182,240,0.12);
+  }
+  button.primary {
+    background: #00B6F0;
+    color: #fff;
+    border: 0;
+    padding: 14px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    width: 100%;
+    margin-top: 16px;
+    transition: background .2s, transform .15s;
+  }
+  button.primary:hover { background:#0099cc; }
+  button.primary:active { transform: translateY(1px); }
+  button.primary:disabled { opacity:.5; cursor:not-allowed; }
+  .product-img {
+    width: 100%;
+    max-height: 240px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fafbfc;
+    margin-top: 10px;
+    padding: 16px;
+  }
+  .product-img.hidden { display:none; }
+  .total-line {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00B6F0;
+    margin-top: 18px;
+    text-align: center;
+    padding: 14px;
+    background: #f0fbff;
+    border-radius: 12px;
+  }
+  .err {
+    color:#dc2626;
+    margin-top: 12px;
+    font-size: 13px;
+    text-align:center;
+  }
+  .ok {
+    color:#0080a0;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+    padding: 14px;
+    background: #f0f8ff;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  /* Modal */
+  .overlay {
+    position:fixed; inset:0;
+    background: rgba(15,23,42,.5);
+    display:flex; align-items:center; justify-content:center;
+    padding: 16px; z-index: 50;
+  }
+  .modal {
+    background:#fff;
+    border-radius: 16px;
+    max-width: 420px; width: 100%;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .modal h2 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+  .modal img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fafbfc;
+    padding: 12px;
+  }
+  .modal-row {
+    display:flex; justify-content:space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #555;
+  }
+  .modal-row:last-of-type {
+    border-bottom: 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: #00B6F0;
+  }
+  .modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .modal-actions button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+  }
+  .btn-yes { background:#00B6F0; color:#fff; }
+  .btn-yes:hover { background:#0099cc; }
+  .btn-no { background:#f0f4f8; color:#555; }
+  .btn-no:hover { background:#e2e8f0; }
+  .hidden { display:none !important; }
+  .date-row { display:flex; gap:8px; align-items:stretch; }
+  .date-row input { flex:1; }
+  .today-btn {
+    background: #00B6F0;
+    color: #fff;
+    border: 0;
+    padding: 0 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background .2s;
+  }
+  .today-btn:hover { background:#0099cc; }
+
+  @media (max-width: 600px) {
+    main { padding: 16px; }
+    .card { padding: 18px; }
+    .header-title { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <img class="logo-img" src="atomy-logo.png" alt="ATOMY">
+      <span class="header-title" id="title">Syria Atomy — Sales</span>
+    </div>
+    <button class="lang-btn" id="langBtn">العربية</button>
+  </div>
+</div>
+
+<main>
+  <div class="card">
+    <label id="lbl_salesperson" for="salesperson">Your name</label>
+    <input id="salesperson" type="text" autocomplete="name" />
+
+    <label id="lbl_product" for="product">Product</label>
+    <select id="product"><option value="">—</option></select>
+
+    <img id="productImg" class="product-img hidden" alt="" />
+
+    <label id="lbl_unit_price" for="unit_price">Price per unit</label>
+    <input id="unit_price" type="number" step="0.01" min="0" inputmode="decimal" />
+
+    <label id="lbl_quantity" for="quantity">Quantity</label>
+    <input id="quantity" type="number" step="1" min="1" inputmode="numeric" />
+
+    <label id="lbl_date" for="sale_date">Date</label>
+    <div class="date-row">
+      <input id="sale_date" type="date" />
+      <button type="button" class="today-btn" id="todayBtn">Today</button>
+    </div>
+
+    <div class="total-line" id="totalLine">Total: 0.00</div>
+
+    <button class="primary" id="submitBtn">Submit Sale</button>
+
+    <div class="err" id="err"></div>
+    <div class="ok hidden" id="ok"></div>
+  </div>
+</main>
+
+<div id="modal" class="overlay hidden" role="dialog" aria-modal="true">
+  <div class="modal">
+    <h2 id="m_title">Confirm sale</h2>
+    <img id="m_img" alt="" />
+    <p id="m_name" style="text-align:center;font-weight:600;margin:12px 0;color:#333"></p>
+    <div class="modal-row"><span id="m_lbl_qty">Quantity</span><span id="m_qty"></span></div>
+    <div class="modal-row"><span id="m_lbl_unit">Unit price</span><span id="m_unit"></span></div>
+    <div class="modal-row"><span id="m_lbl_total">Total</span><span id="m_total"></span></div>
+    <p id="m_question" style="text-align:center;margin-top:14px;color:#555;font-size:14px">Is this correct?</p>
+    <div class="modal-actions">
+      <button class="btn-yes" id="m_yes">Yes</button>
+      <button class="btn-no" id="m_no">No</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const T = {
+    en: {
+      title: 'Syria Atomy — Sales', salesperson: 'Your name', product: 'Product',
+      unit: 'Price per unit', qty: 'Quantity', total: 'Total', submit: 'Submit Sale',
+      date: 'Date', today: 'Today',
+      confirm: 'Confirm sale', question: 'Is this correct?', yes: 'Yes', no: 'No',
+      lang: 'العربية', success: 'Sale recorded successfully',
+      err_required: 'Please fill all fields', err_product: 'Please select a product',
+    },
+    ar: {
+      title: 'سيريا أتومي — المبيعات', salesperson: 'اسمك', product: 'المنتج',
+      unit: 'السعر للوحدة', qty: 'الكمية', total: 'المجموع', submit: 'تسجيل البيع',
+      date: 'التاريخ', today: 'اليوم',
+      confirm: 'تأكيد البيع', question: 'هل هذا صحيح؟', yes: 'نعم', no: 'لا',
+      lang: 'English', success: 'تم تسجيل البيع بنجاح',
+      err_required: 'يرجى تعبئة جميع الحقول', err_product: 'يرجى اختيار منتج',
+    },
+  };
+  let lang = 'en';
+  let products = [];
+
+  function applyLang() {
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('rtl', lang === 'ar');
+    $('title').textContent = t.title;
+    $('lbl_salesperson').textContent = t.salesperson;
+    $('lbl_product').textContent = t.product;
+    $('lbl_unit_price').textContent = t.unit;
+    $('lbl_quantity').textContent = t.qty;
+    $('lbl_date').textContent = t.date;
+    $('todayBtn').textContent = t.today;
+    $('submitBtn').textContent = t.submit;
+    $('langBtn').textContent = t.lang;
+    $('m_title').textContent = t.confirm;
+    $('m_lbl_qty').textContent = t.qty;
+    $('m_lbl_unit').textContent = t.unit;
+    $('m_lbl_total').textContent = t.total;
+    $('m_question').textContent = t.question;
+    $('m_yes').textContent = t.yes;
+    $('m_no').textContent = t.no;
+    updateTotal();
+  }
+
+  $('langBtn').addEventListener('click', () => { lang = lang === 'en' ? 'ar' : 'en'; applyLang(); renderProducts(); });
+
+  const API_BASE = '';
+
+  async function loadProducts() {
+    const res = await fetch(API_BASE + '/api/products');
+    products = await res.json();
+    renderProducts();
+  }
+
+  function renderProducts() {
+    const sel = $('product');
+    sel.innerHTML = '<option value="">—</option>';
+    for (const p of products) {
+      const o = document.createElement('option');
+      o.value = p.id;
+      o.textContent = lang === 'ar' ? p.name_ar : p.name_en;
+      sel.appendChild(o);
+    }
+  }
+
+  function selectedProduct() {
+    const id = Number($('product').value);
+    return products.find((p) => p.id === id);
+  }
+
+  function updateImg() {
+    const p = selectedProduct();
+    const img = $('productImg');
+    if (p && p.image_url) {
+      img.src = p.image_url;
+      img.classList.remove('hidden');
+    } else {
+      img.classList.add('hidden');
+      img.removeAttribute('src');
+    }
+    if (p && (!$('unit_price').value || Number($('unit_price').value) === 0)) {
+      $('unit_price').value = p.selling_price;
+    }
+    updateTotal();
+  }
+
+  function updateTotal() {
+    const q = Number($('quantity').value) || 0;
+    const u = Number($('unit_price').value) || 0;
+    const total = q * u;
+    $('totalLine').textContent = T[lang].total + ': ' + '$' + total.toFixed(2);
+  }
+
+  $('product').addEventListener('change', updateImg);
+  $('quantity').addEventListener('input', updateTotal);
+  $('unit_price').addEventListener('input', updateTotal);
+
+  function istanbulToday() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit',
+    }).formatToParts(new Date());
+    const get = (t) => parts.find((p) => p.type === t).value;
+    return `${get('year')}-${get('month')}-${get('day')}`;
+  }
+  $('todayBtn').addEventListener('click', () => { $('sale_date').value = istanbulToday(); });
+  $('sale_date').value = istanbulToday();
+
+  function showModal(p, qty, unit) {
+    $('m_img').src = p.image_url || '';
+    $('m_img').style.display = p.image_url ? '' : 'none';
+    $('m_name').textContent = lang === 'ar' ? p.name_ar : p.name_en;
+    $('m_qty').textContent = qty;
+    $('m_unit').textContent = '$' + unit.toFixed(2);
+    $('m_total').textContent = '$' + (qty * unit).toFixed(2);
+    $('modal').classList.remove('hidden');
+  }
+  function hideModal() { $('modal').classList.add('hidden'); }
+
+  $('m_no').addEventListener('click', hideModal);
+
+  $('submitBtn').addEventListener('click', () => {
+    $('err').textContent = '';
+    $('ok').classList.add('hidden');
+    const p = selectedProduct();
+    const name = $('salesperson').value.trim();
+    const qty = Number($('quantity').value);
+    const unit = Number($('unit_price').value);
+    if (!p) { $('err').textContent = T[lang].err_product; return; }
+    if (!name || !Number.isInteger(qty) || qty <= 0 || !(unit >= 0)) {
+      $('err').textContent = T[lang].err_required; return;
+    }
+    showModal(p, qty, unit);
+  });
+
+  $('m_yes').addEventListener('click', async () => {
+    const p = selectedProduct();
+    const name = $('salesperson').value.trim();
+    const qty = Number($('quantity').value);
+    const unit = Number($('unit_price').value);
+    const saleDate = $('sale_date').value || istanbulToday();
+    $('m_yes').disabled = true;
+    try {
+      const res = await fetch(API_BASE + '/api/sales', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_id: p.id, salesperson_name: name, quantity: qty, unit_price: unit, sale_date: saleDate }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error');
+      hideModal();
+      $('ok').textContent = T[lang].success + ' — $' + (qty * unit).toFixed(2);
+      $('ok').classList.remove('hidden');
+      $('quantity').value = '';
+      $('unit_price').value = '';
+      updateTotal();
+      await loadProducts();
+    } catch (e) {
+      hideModal();
+      $('err').textContent = e.message;
+    } finally {
+      $('m_yes').disabled = false;
+    }
+  });
+
+  applyLang();
+  loadProducts();
+})();
+</script>
+</body>
+</html>

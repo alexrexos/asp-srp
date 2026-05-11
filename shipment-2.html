@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipment #2 — Syria Atomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f7fa;color:#333;min-height:100vh}
+.header{background:#fff;padding:16px 0;border-bottom:1px solid #e8ecf0}
+.header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo-img{height:40px}
+.header-title{font-size:15px;font-weight:600}
+.back-link{color:#00B6F0;text-decoration:none;font-size:13px;font-weight:500}
+.back-link:hover{text-decoration:underline}
+.hero{max-width:900px;margin:24px auto 0;padding:0 24px}
+.hero-card{background:linear-gradient(135deg,#00B6F0,#0090b3);border-radius:16px;padding:28px;color:white;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.hero-card h1{font-size:22px;font-weight:700}
+.hero-card .date{font-size:13px;opacity:.85;margin-top:4px}
+.hero-stats{display:flex;gap:24px}
+.hero-stat .num{font-size:28px;font-weight:700}
+.hero-stat .lbl{font-size:11px;opacity:.8;text-transform:uppercase}
+main{max-width:900px;margin:24px auto;padding:0 24px 60px}
+.box-card{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.04);margin-bottom:20px;overflow:hidden}
+.box-hdr{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0}
+.box-hdr h2{font-size:16px;font-weight:700;color:#333}
+.box-hdr .wt{font-size:13px;color:#888;font-weight:500}
+.product-row{display:flex;align-items:center;padding:12px 20px;gap:14px;border-bottom:1px solid #f5f5f5}
+.product-row:last-child{border-bottom:none}
+.product-row:hover{background:#fafbfc}
+.p-img{width:120px;height:120px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#f5f5f5;border:1px solid #eee}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.p-info{flex:1;min-width:0}
+.p-name{font-size:14px;font-weight:600;color:#333;line-height:1.3}
+.p-name small{font-weight:400;color:#888;font-size:12px}
+.p-qty{min-width:60px;text-align:right}
+.p-qty .n{font-size:26px;font-weight:700;color:#00B6F0;line-height:1}
+.p-qty .u{font-size:11px;color:#999;margin-top:2px}
+.divider{height:24px;display:flex;align-items:center;justify-content:center}
+.divider::before{content:'';width:60%;height:1px;background:repeating-linear-gradient(90deg,#ddd 0,#ddd 6px,transparent 6px,transparent 12px)}
+@media(max-width:640px){
+.p-img{width:90px;height:90px;border-radius:8px}
+.p-name{font-size:12px}
+.p-qty .n{font-size:20px}
+.product-row{padding:10px 14px;gap:10px}
+.hero-card h1{font-size:18px}
+.hero-stats{gap:16px}
+.hero-stat .num{font-size:22px}
+}
+
+.summary-divider{text-align:center;padding:16px 0 24px;position:relative}
+.summary-divider span{background:#f5f7fa;padding:0 16px;position:relative;z-index:1;font-size:13px;color:#999;font-weight:500}
+.summary-divider::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:#ddd}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="admin.html"><img class="logo-img" src="atomy-logo.png" alt="ATOMY"></a>
+      <span class="header-title">Shipment #2</span>
+    </div>
+    <a href="admin.html" class="back-link">← Back to Admin</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-card">
+    <div>
+      <h1>📦 Shipment #2 — Syria</h1>
+      <div class="date">May 1, 2026</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">16</div><div class="lbl">Boxes</div></div>
+      <div class="hero-stat"><div class="num">106.0</div><div class="lbl">kg</div></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- SUMMARY -->
+<div class="box-card" style="margin-bottom:32px">
+  <div class="box-hdr" style="background:linear-gradient(135deg,#00B6F0,#0090b3);border:none">
+    <h2 style="color:white;font-size:18px">📋 Shipment Summary — All Products</h2>
+    <span class="wt" style="color:rgba(255,255,255,.8)">40 unique products</span>
+  </div>
+  
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00276/org/371/250610000042371.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute Essence UV Güneş Koruyucu Krem</div>
+      <div class="p-boxes">Boxes: B1, B2, B12, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">30</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Hair Oil Complex</div>
+      <div class="p-boxes">Boxes: B3, B13, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">30</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00645/org/812/240930000025812.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy Vücut Losyonu</div>
+      <div class="p-boxes">Boxes: B1, B8, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">27</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute BB — Shade 23</div>
+      <div class="p-boxes">Boxes: B2, B12, B13, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">23</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Diş Fırçası * 8 Adet</div>
+      <div class="p-boxes">Boxes: B2, B10, B11, B12, B14, B15</div>
+    </div>
+    <div class="p-qty"><div class="n">21</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00227/org/356/240926000025356.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute CellActive Ampul</div>
+      <div class="p-boxes">Boxes: B3, B12, B13</div>
+    </div>
+    <div class="p-qty"><div class="n">20</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00505/org/422/241015000027422.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Diş Macunu 200g * 5 Adet</div>
+      <div class="p-boxes">Boxes: B9, B15, B16</div>
+    </div>
+    <div class="p-qty"><div class="n">15</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00315/org/572/240930000025572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Evening Care Peeling Jel</div>
+      <div class="p-boxes">Boxes: B2, B10</div>
+    </div>
+    <div class="p-qty"><div class="n">14</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute BB — Shade 21</div>
+      <div class="p-boxes">Boxes: B2, B12</div>
+    </div>
+    <div class="p-qty"><div class="n">13</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Evening Care Set</div>
+      <div class="p-boxes">Boxes: B4, B5, B6, B13, B15</div>
+    </div>
+    <div class="p-qty"><div class="n">12</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/US/goods/A00834/org/851/241203000031851.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy Lateks Eldiven (Set of 2)</div>
+      <div class="p-boxes">Boxes: B7, B10</div>
+    </div>
+    <div class="p-qty"><div class="n">12</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00248/org/428/241004000026428.png?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute Spot-Out Krem</div>
+      <div class="p-boxes">Boxes: B3, B12</div>
+    </div>
+    <div class="p-qty"><div class="n">10</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00465/org/678/240930000025678.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Daily Expert Maske 1 Nemlendirici * 10 Adet</div>
+      <div class="p-boxes">Boxes: B2, B12</div>
+    </div>
+    <div class="p-qty"><div class="n">9</div><div class="u">boxes</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00207/org/598/251003000047598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute CellActive Cilt Bakım Seti</div>
+      <div class="p-boxes">Boxes: B4, B5, B6, B10</div>
+    </div>
+    <div class="p-qty"><div class="n">8</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/CA/goods/C00620/org/971/241216000032971.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy Saengmodan Saç Toniği</div>
+      <div class="p-boxes">Boxes: B1</div>
+    </div>
+    <div class="p-qty"><div class="n">7</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00305/org/566/240930000025566.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Evening Care Köpük Temizleyici</div>
+      <div class="p-boxes">Boxes: B2, B10</div>
+    </div>
+    <div class="p-qty"><div class="n">7</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00335/org/958/241031000028958.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Evening Care Soyulabilir Maske</div>
+      <div class="p-boxes">Boxes: B2, B10, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">7</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00192/org/321/240926000025321.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Göz Kremi</div>
+      <div class="p-boxes">Boxes: B3, B12, B14</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00464/org/656/240930000025656.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Marine Göz Bandı (box of 60)</div>
+      <div class="p-boxes">Boxes: B5, B8</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">boxes</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00003/org/280/240926000025280.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Cilt Bakım Seti</div>
+      <div class="p-boxes">Boxes: B8, B11</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">set</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Scalpcare Şampuan</div>
+      <div class="p-boxes">Boxes: B8, B10</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00238/org/446/241004000026446.png?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute Spot-Out Serum</div>
+      <div class="p-boxes">Boxes: B12</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00635/org/635/thumb_06e12c99-3525-4ef2-8d52-84fdbf1a90b2.png?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy Bitkisel Vücut Temizleyici</div>
+      <div class="p-boxes">Boxes: B14</div>
+    </div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00217/org/350/240926000025350.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute CellActive Tonik</div>
+      <div class="p-boxes">Boxes: B5</div>
+    </div>
+    <div class="p-qty"><div class="n">4</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00520/org/858/250617000042858.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Ağız Bakım Seti (4 parça)</div>
+      <div class="p-boxes">Boxes: B16</div>
+    </div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/MY/goods/M00462/org/446/241024000028446.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Marine Jel Maske (Nemlendirici & Yatıştırıcı) * 10 Adet</div>
+      <div class="p-boxes">Boxes: B1</div>
+    </div>
+    <div class="p-qty"><div class="n">3</div><div class="u">boxes</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://cdn.dsmcdn.com/ty1179/product/media/images/prod/SPM/PIM/20240221/21/121122a9-9316-3780-ae57-35f5072a7456/1_org_zoom.jpg" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy Güneş Koruyucu Krem SPF50+ PA+++ (Bej)</div>
+      <div class="p-boxes">Boxes: B2</div>
+    </div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00467/org/637/250613000042637.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Daily Expert Maske 3 Sıkılaştırıcı * 10 Adet</div>
+      <div class="p-boxes">Boxes: B12</div>
+    </div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00194/org/308/240926000025308.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Serum</div>
+      <div class="p-boxes">Boxes: B3</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00190/org/302/240926000025302.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Tonik</div>
+      <div class="p-boxes">Boxes: B3</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00247/org/362/240926000025362.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute CellActive Losyon</div>
+      <div class="p-boxes">Boxes: B5</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/US/goods/A00545/org/713/241212000032713.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Hand Therapy El Kremi Seti</div>
+      <div class="p-boxes">Boxes: B10</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00198/org/314/240926000025314.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Besleyici Krem</div>
+      <div class="p-boxes">Boxes: B14</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E52507/org/051/260501000052051.png?w=480&h=480" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Atomy İş Çantası</div>
+      <div class="p-boxes">Boxes: B16</div>
+    </div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00325/org/598/240930000025598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Evening Care Derin Temizleyici</div>
+      <div class="p-boxes">Boxes: B2</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00466/org/683/240930000025683.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Daily Expert Maske 2 Aydınlatıcı * 10 Adet</div>
+      <div class="p-boxes">Boxes: B2</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">box</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00196/org/327/240926000025327.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">THE FAME Losyon</div>
+      <div class="p-boxes">Boxes: B3</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00257/org/379/240926000025379.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Absolute Cellactive Göz Kremi</div>
+      <div class="p-boxes">Boxes: B3</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700647/org/647/thumb_700647_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Rich Body Vücut Kremi</div>
+      <div class="p-boxes">Boxes: B8</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/MY/goods/M00463/org/429/241024000028429.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info">
+      <div class="p-name">Marine Jel Maske (Aydınlatıcı & Sıkılaştırıcı) * 10 Adet</div>
+      <div class="p-boxes">Boxes: B12</div>
+    </div>
+    <div class="p-qty"><div class="n">1</div><div class="u">box</div></div>
+  </div>
+</div>
+
+<div class="summary-divider">
+  <span>Box-by-Box Details Below</span>
+</div>
+<!-- BOX 1 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 1</h2><span class="wt">10.5 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00645/org/812/240930000025812.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Vücut Losyonu</div></div>
+    <div class="p-qty"><div class="n">16</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00276/org/371/250610000042371.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Essence UV Güneş Koruyucu Krem</div></div>
+    <div class="p-qty"><div class="n">16</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/CA/goods/C00620/org/971/241216000032971.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Saengmodan Saç Toniği</div></div>
+    <div class="p-qty"><div class="n">7</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/MY/goods/M00462/org/446/241024000028446.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Marine Jel Maske (Nemlendirici & Yatıştırıcı) * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">boxes</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 2 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 2</h2><span class="wt">8.9 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 21</small></div></div>
+    <div class="p-qty"><div class="n">11</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 23</small></div></div>
+    <div class="p-qty"><div class="n">10</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://cdn.dsmcdn.com/ty1179/product/media/images/prod/SPM/PIM/20240221/21/121122a9-9316-3780-ae57-35f5072a7456/1_org_zoom.jpg" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Güneş Koruyucu Krem SPF50+ PA+++ (Bej)</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00315/org/572/240930000025572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Peeling Jel</div></div>
+    <div class="p-qty"><div class="n">6</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00305/org/566/240930000025566.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Köpük Temizleyici</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00335/org/958/241031000028958.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Soyulabilir Maske</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00325/org/598/240930000025598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Derin Temizleyici</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00276/org/371/250610000042371.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Essence UV Güneş Koruyucu Krem</div></div>
+    <div class="p-qty"><div class="n">8</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">6</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00465/org/678/240930000025678.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Daily Expert Maske 1 Nemlendirici * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">6</div><div class="u">boxes</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00466/org/683/240930000025683.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Daily Expert Maske 2 Aydınlatıcı * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">box</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 3 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 3</h2><span class="wt">8.4 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Hair Oil Complex</div></div>
+    <div class="p-qty"><div class="n">21</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00227/org/356/240926000025356.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Ampul</div></div>
+    <div class="p-qty"><div class="n">11</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00248/org/428/241004000026428.png?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Spot-Out Krem</div></div>
+    <div class="p-qty"><div class="n">9</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00194/org/308/240926000025308.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Serum</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00192/org/321/240926000025321.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Göz Kremi</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00190/org/302/240926000025302.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Tonik</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00196/org/327/240926000025327.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Losyon</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00257/org/379/240926000025379.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Cellactive Göz Kremi</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 4 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 4</h2><span class="wt">4.5 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00207/org/598/251003000047598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Set</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 5 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 5</h2><span class="wt">7.3 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00207/org/598/251003000047598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Set</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">set</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00217/org/350/240926000025350.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Tonik</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00247/org/362/240926000025362.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Losyon</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00464/org/656/240930000025656.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Marine Göz Bandı <small>(box of 60)</small></div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">boxes</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 6 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 6</h2><span class="wt">4.9 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00207/org/598/251003000047598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Set</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 7 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 7</h2><span class="wt">3.4 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/US/goods/A00834/org/851/241203000031851.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Lateks Eldiven <small>(Set of 2)</small></div></div>
+    <div class="p-qty"><div class="n">10</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 8 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 8</h2><span class="wt">7.5 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00003/org/280/240926000025280.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">set</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00645/org/812/240930000025812.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Vücut Losyonu</div></div>
+    <div class="p-qty"><div class="n">8</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Scalpcare Şampuan</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700647/org/647/thumb_700647_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Rich Body Vücut Kremi</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00464/org/656/240930000025656.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Marine Göz Bandı <small>(box of 60)</small></div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">box</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 9 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 9</h2><span class="wt">11.4 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00505/org/422/241015000027422.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Macunu 200g * 5 Adet</div></div>
+    <div class="p-qty"><div class="n">10</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 10 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 10</h2><span class="wt">6.1 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00207/org/598/251003000047598.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">set</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00305/org/566/240930000025566.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Köpük Temizleyici</div></div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00335/org/958/241031000028958.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Soyulabilir Maske</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00315/org/572/240930000025572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Peeling Jel</div></div>
+    <div class="p-qty"><div class="n">8</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/US/goods/A00834/org/851/241203000031851.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Lateks Eldiven <small>(Set of 2)</small></div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img" style="display:flex;align-items:center;justify-content:center;background:#f0f4f8;font-size:28px">🩲</div>
+    <div class="p-info"><div class="p-name">Sample Underwear <small>(Tester — not on website)</small></div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700691/org/691/thumb_700691_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Scalpcare Şampuan</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/US/goods/A00545/org/713/241212000032713.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Hand Therapy El Kremi Seti</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 11 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 11</h2><span class="wt">4.7 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00003/org/280/240926000025280.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Cilt Bakım Seti</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 12 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 12</h2><span class="wt">6.2 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00465/org/678/240930000025678.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Daily Expert Maske 1 Nemlendirici * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00467/org/637/250613000042637.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Daily Expert Maske 3 Sıkılaştırıcı * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/MY/goods/M00463/org/429/241024000028429.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Marine Jel Maske (Aydınlatıcı & Sıkılaştırıcı) * 10 Adet</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">box</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00238/org/446/241004000026446.png?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Spot-Out Serum</div></div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00227/org/356/240926000025356.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Ampul</div></div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00248/org/428/241004000026428.png?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Spot-Out Krem</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00192/org/321/240926000025321.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Göz Kremi</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00276/org/371/250610000042371.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Essence UV Güneş Koruyucu Krem</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 23</small></div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 21</small></div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 13 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 13</h2><span class="wt">5.3 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Set</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Hair Oil Complex</div></div>
+    <div class="p-qty"><div class="n">8</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 23</small></div></div>
+    <div class="p-qty"><div class="n">7</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00227/org/356/240926000025356.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute CellActive Ampul</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">pieces</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 14 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 14</h2><span class="wt">6.7 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00635/org/635/thumb_06e12c99-3525-4ef2-8d52-84fdbf1a90b2.png?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Bitkisel Vücut Temizleyici</div></div>
+    <div class="p-qty"><div class="n">5</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00645/org/812/240930000025812.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy Vücut Losyonu</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00289/org/572/250612000042572.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute BB <small>— Shade 23</small></div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00335/org/958/241031000028958.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Soyulabilir Maske</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00276/org/371/250610000042371.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Absolute Essence UV Güneş Koruyucu Krem</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/EU/goods/700681/org/681/thumb_700681_0000.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Hair Oil Complex</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00198/org/314/240926000025314.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Besleyici Krem</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00192/org/321/240926000025321.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">THE FAME Göz Kremi</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">piece</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 15 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 15</h2><span class="wt">4.7 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00355/org/580/240930000025580.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Evening Care Set</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00505/org/422/241015000027422.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Macunu 200g * 5 Adet</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/SG/goods/S00510/org/738/240925000024738.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Fırçası * 8 Adet</div></div>
+    <div class="p-qty"><div class="n">1</div><div class="u">set</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOX 16 -->
+<div class="box-card">
+  <div class="box-hdr"><h2>Box 16</h2><span class="wt">5.5 kg</span></div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E00520/org/858/250617000042858.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Ağız Bakım Seti <small>(4 parça)</small></div></div>
+    <div class="p-qty"><div class="n">4</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/ID/goods/I00505/org/422/241015000027422.jpg?w=200&h=200" alt=""></div>
+    <div class="p-info"><div class="p-name">Diş Macunu 200g * 5 Adet</div></div>
+    <div class="p-qty"><div class="n">3</div><div class="u">sets</div></div>
+  </div>
+  <div class="product-row">
+    <div class="p-img"><img src="https://image.atomy.com/TR/goods/E52507/org/051/260501000052051.png?w=480&h=480" alt=""></div>
+    <div class="p-info"><div class="p-name">Atomy İş Çantası</div></div>
+    <div class="p-qty"><div class="n">2</div><div class="u">pieces</div></div>
+  </div>
+</div>
+
+</main>
+
+</body>
+</html>

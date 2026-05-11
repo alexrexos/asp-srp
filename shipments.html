@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shipments — Syria Atomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body { font-family:'Inter',sans-serif; background:#f5f7fa; color:#333; min-height:100vh; }
+  .header { background:#fff; padding:16px 0; border-bottom:1px solid #e8ecf0; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .header-left { display:flex; align-items:center; gap:12px; }
+  .logo-img { height:40px; }
+  .header-title { font-size:15px; font-weight:600; }
+  .back-link { color:#00B6F0; text-decoration:none; font-size:13px; font-weight:500; }
+  .back-link:hover { text-decoration:underline; }
+  main { max-width:1100px; margin:24px auto; padding:0 24px 60px; }
+  .top-actions { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+  .top-actions h1 { font-size:22px; font-weight:700; color:#333; }
+  button.primary { background:#00B6F0; color:#fff; border:0; padding:11px 22px; border-radius:10px; cursor:pointer; font-size:14px; font-weight:600; font-family:inherit; }
+  button.primary:hover { background:#0099cc; }
+  .section { margin-bottom:36px; }
+  .section h2 { font-size:13px; font-weight:600; color:#999; text-transform:uppercase; letter-spacing:.05em; margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:16px; }
+  .ship-card { background:#fff; border-radius:14px; box-shadow:0 2px 8px rgba(0,0,0,.04); padding:20px; cursor:pointer; transition:transform .15s, box-shadow .15s; text-decoration:none; color:inherit; display:block; }
+  .ship-card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,.08); }
+  .ship-card .num { font-size:20px; font-weight:700; color:#00B6F0; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .ship-card .dest { font-size:14px; font-weight:600; color:#333; margin-bottom:4px; }
+  .ship-card .meta { font-size:12px; color:#999; margin-bottom:12px; }
+  .badge { display:inline-block; font-size:11px; padding:3px 10px; border-radius:20px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; }
+  .badge.active { background:#dbeafe; color:#1d4ed8; }
+  .badge.dispatched { background:#fef3c7; color:#92400e; }
+  .badge.received { background:#d1fae5; color:#065f46; }
+  .empty { color:#999; font-size:14px; padding:24px; background:#fff; border-radius:14px; text-align:center; }
+  .login-card { max-width:380px; margin:8vh auto; padding:32px; background:#fff; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+  .login-card h2 { text-align:center; font-size:18px; margin-bottom:8px; }
+  .login-card .sub { text-align:center; color:#999; font-size:13px; margin-bottom:20px; }
+  .login-card input { width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:10px; font:inherit; }
+  .err { color:#dc2626; font-size:12px; margin-top:8px; }
+  @media(max-width:640px) { main { padding:0 16px 40px; } }
+</style>
+</head>
+<body>
+
+<div id="login" class="hidden">
+  <div class="login-card">
+    <div style="text-align:center;margin-bottom:16px"><img src="atomy-logo.png" style="height:50px" alt=""></div>
+    <h2>Admin Login</h2>
+    <div class="sub">Syria Atomy — Shipments</div>
+    <input id="adminKeyInput" type="password" placeholder="Admin key" />
+    <div class="err" id="loginErr"></div>
+    <div style="margin-top:14px"><button class="primary" id="loginBtn" style="width:100%">Sign in</button></div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="admin.html"><img class="logo-img" src="atomy-logo.png" alt="ATOMY"></a>
+        <span class="header-title">Shipments</span>
+      </div>
+      <a href="admin.html" class="back-link">← Back to Admin</a>
+    </div>
+  </div>
+
+  <main>
+    <div class="top-actions">
+      <h1>📦 Shipments</h1>
+      <a href="shipment-create.html"><button class="primary">+ Create New Shipment</button></a>
+    </div>
+
+    <div class="section">
+      <h2>Active Shipments</h2>
+      <div id="active-list" class="grid"></div>
+    </div>
+
+    <div class="section">
+      <h2>Past Shipments</h2>
+      <div id="past-list" class="grid"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  const KEY='adminKey';
+  const $=id=>document.getElementById(id);
+  const getKey=()=>sessionStorage.getItem(KEY);
+  const setKey=k=>sessionStorage.setItem(KEY,k);
+  const clearKey=()=>sessionStorage.removeItem(KEY);
+
+  async function api(path, opts={}){
+    const headers=Object.assign({'Content-Type':'application/json'}, opts.headers||{});
+    const k=getKey();
+    if(k) headers['X-Admin-Key']=k;
+    const r=await fetch(path,{...opts,headers});
+    if(r.status===401){ showLogin('Invalid admin key'); throw new Error('unauth'); }
+    const t=await r.text();
+    const d=t?JSON.parse(t):null;
+    if(!r.ok) throw new Error((d&&d.error)||r.statusText);
+    return d;
+  }
+
+  function showLogin(err){
+    clearKey();
+    $('app').style.display='none';
+    $('login').classList.remove('hidden');
+    $('login').style.display='block';
+    if(err) $('loginErr').textContent=err;
+  }
+  function showApp(){
+    $('login').style.display='none';
+    $('app').style.display='block';
+    load();
+  }
+
+  $('loginBtn').addEventListener('click', async ()=>{
+    const k=$('adminKeyInput').value.trim();
+    if(!k){ $('loginErr').textContent='Enter a key'; return; }
+    setKey(k);
+    try { await api('/api/shipments'); showApp(); } catch(e){}
+  });
+  $('adminKeyInput').addEventListener('keydown', e=>{ if(e.key==='Enter') $('loginBtn').click(); });
+
+  function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function fmtDate(s){ try { return new Date(s).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); } catch { return s; } }
+
+  function card(s){
+    const status=s.status||'active';
+    const date=s.received_at||s.dispatched_at||s.created_at;
+    return `<a href="shipment-detail.html?id=${s.id}" class="ship-card">
+      <div class="num">📦 #${s.shipment_number}</div>
+      <div class="dest">${escapeHtml(s.destination||'No destination')}</div>
+      <div class="meta">${fmtDate(date)} · ${(s.total_weight||0).toFixed(1)} kg</div>
+      <span class="badge ${status}">${status}</span>
+    </a>`;
+  }
+
+  async function load(){
+    try {
+      const all = await api('/api/shipments');
+      const active = all.filter(s=>s.status==='active');
+      const past = all.filter(s=>s.status!=='active');
+      $('active-list').innerHTML = active.length ? active.map(card).join('') : '<div class="empty">No active shipments</div>';
+      $('past-list').innerHTML = past.length ? past.map(card).join('') : '<div class="empty">No past shipments</div>';
+    } catch(e){}
+  }
+
+  if(getKey()) showApp(); else showLogin();
+})();
+</script>
+</body>
+</html>
