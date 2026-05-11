@@ -337,14 +337,46 @@
     renderProducts();
   }
 
+  function getCategory(p) {
+    const n = (p.name_en || '').toLowerCase();
+    const a = (p.name_ar || '');
+    if (n.includes('mask') || n.includes('maske') || n.includes('band')) return lang === 'ar' ? 'أقنعة' : 'Masks';
+    if (n.includes('bb krem') || n.includes('cilt bakım seti') || n.includes('güneş') || n.includes('derma') || n.includes('fame') || n.includes('evening care')) return lang === 'ar' ? 'العناية بالبشرة' : 'Skincare';
+    if (n.includes('şampuan') || n.includes('saç') || n.includes('hair') || n.includes('tonik')) return lang === 'ar' ? 'العناية بالشعر' : 'Haircare';
+    if (n.includes('vücut') || n.includes('body') || n.includes('losyon') || n.includes('kremi') || n.includes('temizleyici') || n.includes('el kremi') || n.includes('hand') || n.includes('rich body')) return lang === 'ar' ? 'العناية بالجسم' : 'Body Care';
+    if (n.includes('diş') || n.includes('ağız')) return lang === 'ar' ? 'العناية بالفم والأسنان' : 'Oral Care';
+    if (n.includes('eldiven') || n.includes('glove')) return lang === 'ar' ? 'مستلزمات المنزل' : 'Home';
+    return lang === 'ar' ? 'أخرى' : 'Other';
+  }
+
   function renderProducts() {
     const sel = $('product');
     sel.innerHTML = '<option value="">—</option>';
+    const groups = {};
     for (const p of products) {
-      const o = document.createElement('option');
-      o.value = p.id;
-      o.textContent = lang === 'ar' ? p.name_ar : p.name_en;
-      sel.appendChild(o);
+      const cat = getCategory(p);
+      if (!groups[cat]) groups[cat] = [];
+      groups[cat].push(p);
+    }
+    // Sort each group by price ascending
+    for (const cat in groups) {
+      groups[cat].sort((a, b) => (a.selling_price || 0) - (b.selling_price || 0));
+    }
+    // Define category order
+    const catOrder = lang === 'ar'
+      ? ['العناية بالبشرة', 'العناية بالشعر', 'العناية بالجسم', 'أقنعة', 'العناية بالفم والأسنان', 'مستلزمات المنزل', 'أخرى']
+      : ['Skincare', 'Haircare', 'Body Care', 'Masks', 'Oral Care', 'Home', 'Other'];
+    for (const cat of catOrder) {
+      if (!groups[cat]) continue;
+      const og = document.createElement('optgroup');
+      og.label = cat;
+      for (const p of groups[cat]) {
+        const o = document.createElement('option');
+        o.value = p.id;
+        o.textContent = lang === 'ar' ? p.name_ar : p.name_en;
+        og.appendChild(o);
+      }
+      sel.appendChild(og);
     }
   }
 
